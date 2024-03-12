@@ -13,8 +13,8 @@
     },
     "./resolver": {
       "types": "./dist/resolvers/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/resolvers/index.js",
+      "require": "./dist/resolvers/index.cjs"
     }
   },
   "tsup": {
@@ -32,9 +32,13 @@
   "scripts": {
     "build": "tsup"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teranes10/vue-composables.git"
+  },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Teranes",
+  "license": "MIT",
   "dependencies": {
     "lodash-es": "^4.17.21",
     "vue": "^3.4.21"
