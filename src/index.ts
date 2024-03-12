@@ -5,6 +5,8 @@ export { usePaginate, usePaginationHandler, useFilter, useFilterAndPaginate } fr
 export { useIsNull, useMapper, useObjectAssign, useCloneDeep, useCoalesce, useCoalesceTruthy, useObjectValueByPath } from './values/Object';
 export { useVModel } from './values/VueExtensions';
 
+export { useDebounce } from './events/Debounce';
+export { useDraggable } from './events/Draggable';
 export { useInfiniteScroll } from './events/InfiniteScroll';
-export { useIsEventInsideElement } from './events/EventListener';
+export { useEventListener, useIsEventInsideElement } from './events/EventListener';
 export { useThrottle } from './events/Throttle';

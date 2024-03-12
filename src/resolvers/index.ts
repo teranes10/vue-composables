@@ -17,10 +17,12 @@ export const ComposablesAutoImport = {
     "useCoalesce",
     "useCoalesceTruthy",
     "useObjectValueByPath",
-
     "useVModel",
 
+    "useDebounce",
+    "useDraggable",
     "useInfiniteScroll",
+    "useEventListener",
     "useIsEventInsideElement",
     "useThrottle",
   ],
