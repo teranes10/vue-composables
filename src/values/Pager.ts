@@ -86,7 +86,7 @@ export function usePaginationHandler<T>(
 
   watch([serverSideRendering, items], () => {
     load()
-  }, { immediate: true })
+  }, { immediate: true, deep: true })
 
   return {
     items: internalItems,
