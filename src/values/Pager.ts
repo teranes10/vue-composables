@@ -5,15 +5,14 @@ export function usePaginationHandler<T>(
   page: Ref<number>,
   itemsPerPage: Ref<number>,
   callback: (options: LoadOptions<T>) => void,
-  serverSideRendering: Ref<boolean>,
-  options?: Options
+  { serverSideRendering, search, searchDelay, storePreviousItems, params }: Options = {}
 ) {
   const storedItems = ref<T[]>([]) as Ref<T[]>;
   const internalItems = ref<T[]>([]) as Ref<T[]>;
   const internalTotalItems = ref(0);
 
   const setData = (items: T[], totalItems: number) => {
-    if (options?.storePreviousItems) {
+    if (storePreviousItems) {
       storedItems.value.push(...items);
       internalItems.value = storedItems.value;
     } else {
@@ -27,22 +26,23 @@ export function usePaginationHandler<T>(
   const load = () => {
     isLoading.value = true;
 
-    if (serverSideRendering.value) {
+    if (serverSideRendering?.value) {
       const loadOptions: LoadOptions<T> = {
         page: page.value,
         itemsPerPage: itemsPerPage.value,
-        search: options?.search?.value || "",
+        search: search?.value || "",
         callback: (items: T[], totalItems: number) => {
           isSearching.value = false;
           isLoading.value = false;
           setData(items, totalItems);
         },
+        params
       };
 
       callback(loadOptions);
     } else {
       const pagination = useFilterAndPaginate(items.value, {
-        search: options?.search?.value || "",
+        search: search?.value || "",
         page: page.value,
         itemsPerPage: itemsPerPage.value,
       });
@@ -54,17 +54,17 @@ export function usePaginationHandler<T>(
   };
 
   const isSearching = ref(false);
-  const searchDelay = computed(
-    () => options?.searchDelay || (serverSideRendering.value ? 2500 : 500)
+  const computedSearchDelay = computed(
+    () => searchDelay || (serverSideRendering?.value ? 2500 : 500)
   );
 
   const loadingTimer = ref<NodeJS.Timeout>();
   const loadingTimerDelay = computed(() =>
-    isSearching.value ? searchDelay.value : 500
+    isSearching.value ? computedSearchDelay.value : 500
   );
 
   watch(
-    [options?.search, itemsPerPage, page],
+    [search, itemsPerPage, page],
     ([newSearch, newItemsPerPage], [oldSearch, oldItemsPerPage]) => {
       if (newSearch !== oldSearch) {
         isSearching.value = true;
@@ -84,7 +84,7 @@ export function usePaginationHandler<T>(
     }
   );
 
-  watch([serverSideRendering, items], () => {
+  watch([serverSideRendering, items, params], () => {
     load()
   }, { immediate: true, deep: true })
 
@@ -140,10 +140,13 @@ export type LoadOptions<T> = {
   itemsPerPage: number;
   search: string;
   callback: (items: T[], totalItems: number) => void;
+  params?: { [key: string]: any }
 };
 
 export type Options = {
+  serverSideRendering?: Ref<boolean>,
   search?: Ref<string>;
   searchDelay?: number;
   storePreviousItems?: boolean;
+  params?: { [key: string]: any }
 };
