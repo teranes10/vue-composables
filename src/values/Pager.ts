@@ -12,7 +12,10 @@ export function usePaginationHandler<T>(
   const internalTotalItems = ref(0);
 
   const setData = (items: T[], totalItems: number) => {
-    if (storePreviousItems) {
+    if (serverSideRendering?.value && storePreviousItems) {
+      if (page.value === 1) {
+        storedItems.value = [];
+      }
       storedItems.value.push(...items);
       internalItems.value = storedItems.value;
     } else {
@@ -148,5 +151,5 @@ export type Options = {
   search?: Ref<string>;
   searchDelay?: number;
   storePreviousItems?: boolean;
-  params?: { [key: string]: any }
+  params?: Ref<{ [key: string]: any }>
 };
