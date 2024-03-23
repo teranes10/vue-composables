@@ -39,7 +39,7 @@ export function usePaginationHandler<T>(
           isLoading.value = false;
           setData(items, totalItems);
         },
-        params
+        params: params?.value
       };
 
       callback(loadOptions);
