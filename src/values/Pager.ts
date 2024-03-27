@@ -11,11 +11,12 @@ export function usePaginationHandler<T>(
   const internalItems = ref<T[]>([]) as Ref<T[]>;
   const internalTotalItems = ref(0);
 
-  const setData = (items: T[], totalItems: number) => {
+  const setData = (items: T[], totalItems: number, invalidate = false) => {
     if (serverSideRendering?.value && storePreviousItems) {
-      if (page.value === 1) {
+      if (page.value === 1 || invalidate) {
         storedItems.value = [];
       }
+
       storedItems.value.push(...items);
       internalItems.value = storedItems.value;
     } else {
@@ -28,6 +29,7 @@ export function usePaginationHandler<T>(
   const isLoading = ref(false);
   const load = () => {
     isLoading.value = true;
+    setData([], 0, true);
 
     if (serverSideRendering?.value) {
       const loadOptions: LoadOptions<T> = {
@@ -84,6 +86,7 @@ export function usePaginationHandler<T>(
       }
 
       isWaiting.value = true;
+      setData([], 0, true)
 
       clearTimeout(waitingTimer.value);
       waitingTimer.value = setTimeout(() => {
@@ -102,6 +105,7 @@ export function usePaginationHandler<T>(
     totalItems: internalTotalItems,
     isLoading,
     isWaiting,
+    isSearching,
     notifyDataSetChanged: () => {
       page.value = 1;
       load();
