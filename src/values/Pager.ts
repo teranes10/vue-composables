@@ -61,8 +61,9 @@ export function usePaginationHandler<T>(
     () => searchDelay || (serverSideRendering?.value ? 2500 : 500)
   );
 
-  const loadingTimer = ref<NodeJS.Timeout>();
-  const loadingTimerDelay = computed(() =>
+  const isWaiting = ref(false);
+  const waitingTimer = ref<NodeJS.Timeout>();
+  const waitingTimerDelay = computed(() =>
     isSearching.value ? computedSearchDelay.value : 500
   );
 
@@ -82,10 +83,13 @@ export function usePaginationHandler<T>(
         storedItems.value = [];
       }
 
-      isLoading.value = true;
+      isWaiting.value = true;
 
-      clearTimeout(loadingTimer.value);
-      loadingTimer.value = setTimeout(load, loadingTimerDelay.value);
+      clearTimeout(waitingTimer.value);
+      waitingTimer.value = setTimeout(() => {
+        isWaiting.value = false;
+        load();
+      }, waitingTimerDelay.value);
     }
   );
 
@@ -96,7 +100,8 @@ export function usePaginationHandler<T>(
   return {
     items: internalItems,
     totalItems: internalTotalItems,
-    isLoading: isLoading,
+    isLoading,
+    isWaiting,
     notifyDataSetChanged: () => {
       page.value = 1;
       load();
