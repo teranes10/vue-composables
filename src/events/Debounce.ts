@@ -1,8 +1,8 @@
-export function useDebounce(callback: () => void, delay: number = 50) {
+export function useDebounce<T>(callback: (...args: T[]) => void, delay: number = 50) {
   let timerId: NodeJS.Timeout;
 
-  return function () {
+  return function (...args: T[]) {
     clearTimeout(timerId);
-    timerId = setTimeout(callback, delay);
+    timerId = setTimeout(() => callback(...args), delay);
   };
 }
