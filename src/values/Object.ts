@@ -63,18 +63,3 @@ export function useMapper<T>(
 
   return instance;
 }
-
-export function useObjectAssign(target: any, src: any) {
-  for (const prop in src) {
-    if (!target.hasOwnProperty(prop)) {
-      continue;
-    }
-
-    const value = src[prop];
-    if (typeof value !== 'object') {
-      target[prop] = value;
-    }
-  }
-
-  return target;
-}

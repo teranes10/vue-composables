@@ -2,7 +2,9 @@ export { useGetAccessedProps, useFunctionCaller, useGetParameters } from './valu
 export { useGetFromStorage, useSetToStorage } from './values/LocalStorage'
 export { useStringTemplateWithReplacements } from './values/String'
 export { usePaginate, usePaginationHandler, useFilter, useFilterAndPaginate } from './values/Pager'
-export { useIsNull, useMapper, useObjectAssign, useCloneDeep, useCoalesce, useCoalesceTruthy, useObjectValueByPath } from './values/Object';
+export { useIsNull, useMapper, useCloneDeep, useCoalesce, useCoalesceTruthy, useObjectValueByPath } from './values/Object';
+export { useObjectAssign, useValueAssign } from './values/ObjectAssign';
+export { useObjectCompare, useArrayCompare, useValueCompare } from './values/ObjectCompare'
 export { useVModel } from './values/VueExtensions';
 
 export { useDebounce } from './events/Debounce';
