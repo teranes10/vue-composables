@@ -82,6 +82,8 @@ export function usePaginationHandler<T>(
         storedItems.value = [];
       }
 
+      isLoading.value = true;
+
       clearTimeout(loadingTimer.value);
       loadingTimer.value = setTimeout(load, loadingTimerDelay.value);
     }
