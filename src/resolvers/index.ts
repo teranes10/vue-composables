@@ -4,7 +4,7 @@ export const ComposablesAutoImport = {
     "useGetFromStorage", "useSetToStorage",
     "useStringTemplateWithReplacements",
     "usePaginate", "usePaginationHandler", "useFilter", "useFilterAndPaginate",
-    "useIsNull", "useMapper", "useCloneDeep", "useCoalesce", "useCoalesceTruthy", "useObjectValueByPath",
+    "useIsNull", "useIsNullOrEmptyObject", "useMapper", "useCloneDeep", "useCoalesce", "useCoalesceTruthy", "useObjectValueByPath",
     "useObjectAssign", "useValueAssign",
     "useObjectCompare", "useArrayCompare", "useValueCompare",
     "useVModel",
@@ -15,4 +15,12 @@ export const ComposablesAutoImport = {
     "useEventListener", "useIsEventInsideElement",
     "useThrottle",
   ],
+};
+
+export const ComposablesTypesAutoImport = {
+  from: "@teranes/vue-composables",
+  imports: [
+    'PagerLoadOptions'
+  ],
+  type: true,
 };

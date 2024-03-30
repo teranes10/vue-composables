@@ -63,3 +63,19 @@ export function useMapper<T>(
 
   return instance;
 }
+
+export function useIsNullOrEmptyObject(val: any) {
+  if (!val) {
+    return true;
+  }
+
+  if (typeof val !== 'object') {
+    return false;
+  }
+
+  if (Array.isArray(val)) {
+    return val.length === 0
+  }
+
+  return Object.keys(val).length === 0;
+}

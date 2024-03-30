@@ -1,11 +1,12 @@
 import { computed, ref, watch, type Ref } from "vue";
+import { useValueCompare } from "./ObjectCompare";
 
 export function usePaginationHandler<T>(
   items: Ref<T[]>,
   page: Ref<number>,
   itemsPerPage: Ref<number>,
   callback: (options: LoadOptions<T>) => void,
-  { serverSideRendering, search, searchDelay, storePreviousItems, params }: Options = {}
+  { serverSideRendering, search, searchDelay = 2500, storePreviousItems, params = ref({}), optionsDelay = 500 }: Options = {}
 ) {
   const storedItems = ref<T[]>([]) as Ref<T[]>;
   const internalItems = ref<T[]>([]) as Ref<T[]>;
@@ -26,26 +27,14 @@ export function usePaginationHandler<T>(
     internalTotalItems.value = totalItems;
   };
 
+  const localRendering = ref(false);
+
   const isLoading = ref(false);
   const load = () => {
     isLoading.value = true;
     setData([], 0, true);
 
-    if (serverSideRendering?.value) {
-      const loadOptions: LoadOptions<T> = {
-        page: page.value,
-        itemsPerPage: itemsPerPage.value,
-        search: search?.value || "",
-        callback: (items: T[], totalItems: number) => {
-          isSearching.value = false;
-          isLoading.value = false;
-          setData(items, totalItems);
-        },
-        params: params?.value
-      };
-
-      callback(loadOptions);
-    } else {
+    if (localRendering.value || !serverSideRendering?.value) {
       const pagination = useFilterAndPaginate(items.value, {
         search: search?.value || "",
         page: page.value,
@@ -55,19 +44,40 @@ export function usePaginationHandler<T>(
       isSearching.value = false;
       isLoading.value = false;
       setData(pagination.items, pagination.totalItems);
+
+      return;
     }
+
+    const loadOptions: LoadOptions<T> = {
+      page: page.value,
+      itemsPerPage: itemsPerPage.value,
+      search: search?.value || "",
+      callback: (items: T[], totalItems: number) => {
+        isSearching.value = false;
+        isLoading.value = false;
+        setData(items, totalItems);
+      },
+      setItems: (values: T[]) => {
+        isSearching.value = false;
+        isLoading.value = false;
+        items.value = values;
+
+        localRendering.value = true;
+        load();
+      },
+      params: params?.value
+    };
+
+    callback(loadOptions);
+
   };
 
   const isSearching = ref(false);
-  const computedSearchDelay = computed(
-    () => searchDelay || (serverSideRendering?.value ? 2500 : 500)
-  );
+  const computedSearchDelay = computed(() => (serverSideRendering?.value ? searchDelay : optionsDelay));
 
   const isWaiting = ref(false);
   const waitingTimer = ref<NodeJS.Timeout>();
-  const waitingTimerDelay = computed(() =>
-    isSearching.value ? computedSearchDelay.value : 500
-  );
+  const waitingTimerDelay = computed(() => isSearching.value ? computedSearchDelay.value : optionsDelay);
 
   watch(
     [search, itemsPerPage, page],
@@ -96,9 +106,14 @@ export function usePaginationHandler<T>(
     }
   );
 
-  watch([serverSideRendering, items, params], () => {
-    load()
-  }, { immediate: true, deep: true })
+  watch([params, serverSideRendering, items],
+    ([params], [oldParams]: any) => {
+      if (useValueCompare(params, oldParams, true)) {
+        localRendering.value = false;
+      }
+
+      load()
+    }, { immediate: true, deep: true })
 
   return {
     items: internalItems,
@@ -154,12 +169,14 @@ export type LoadOptions<T> = {
   itemsPerPage: number;
   search: string;
   callback: (items: T[], totalItems: number) => void;
+  setItems: (items: T[]) => void;
   params?: { [key: string]: any }
 };
 
 export type Options = {
-  serverSideRendering?: Ref<boolean>,
   search?: Ref<string>;
+  optionsDelay?: number;
+  serverSideRendering?: Ref<boolean>,
   searchDelay?: number;
   storePreviousItems?: boolean;
   params?: Ref<{ [key: string]: any }>
