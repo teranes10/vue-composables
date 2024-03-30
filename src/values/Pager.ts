@@ -6,14 +6,15 @@ export function usePaginationHandler<T>(
   page: Ref<number>,
   itemsPerPage: Ref<number>,
   callback: (options: LoadOptions<T>) => void,
-  { serverSideRendering, search, searchDelay = 2500, storePreviousItems, params = ref({}), optionsDelay = 500 }: Options = {}
+  { serverSideRendering = ref(false), search = ref(''), searchDelay = 2500, storePreviousItems = false, params = ref({}), optionsDelay = 500 }: Options = {}
 ) {
+
   const storedItems = ref<T[]>([]) as Ref<T[]>;
   const internalItems = ref<T[]>([]) as Ref<T[]>;
   const internalTotalItems = ref(0);
 
   const setData = (items: T[], totalItems: number, invalidate = false) => {
-    if (serverSideRendering?.value && storePreviousItems) {
+    if (serverSideRendering.value && storePreviousItems) {
       if (page.value === 1 || invalidate) {
         storedItems.value = [];
       }
@@ -28,15 +29,15 @@ export function usePaginationHandler<T>(
   };
 
   const localRendering = ref(false);
-
   const isLoading = ref(false);
+
   const load = () => {
     isLoading.value = true;
     setData([], 0, true);
 
-    if (localRendering.value || !serverSideRendering?.value) {
+    if (localRendering.value || !serverSideRendering.value) {
       const pagination = useFilterAndPaginate(items.value, {
-        search: search?.value || "",
+        search: search.value || "",
         page: page.value,
         itemsPerPage: itemsPerPage.value,
       });
@@ -51,7 +52,7 @@ export function usePaginationHandler<T>(
     const loadOptions: LoadOptions<T> = {
       page: page.value,
       itemsPerPage: itemsPerPage.value,
-      search: search?.value || "",
+      search: search.value || "",
       callback: (items: T[], totalItems: number) => {
         isSearching.value = false;
         isLoading.value = false;
@@ -60,12 +61,10 @@ export function usePaginationHandler<T>(
       setItems: (values: T[]) => {
         isSearching.value = false;
         isLoading.value = false;
-        items.value = values;
-
         localRendering.value = true;
-        load();
+        items.value = values;
       },
-      params: params?.value
+      params: params.value
     };
 
     callback(loadOptions);
@@ -73,7 +72,7 @@ export function usePaginationHandler<T>(
   };
 
   const isSearching = ref(false);
-  const computedSearchDelay = computed(() => (serverSideRendering?.value ? searchDelay : optionsDelay));
+  const computedSearchDelay = computed(() => (localRendering.value || !serverSideRendering.value ? optionsDelay : searchDelay));
 
   const isWaiting = ref(false);
   const waitingTimer = ref<NodeJS.Timeout>();
@@ -108,7 +107,8 @@ export function usePaginationHandler<T>(
 
   watch([params, serverSideRendering, items],
     ([params], [oldParams]: any) => {
-      if (useValueCompare(params, oldParams, true)) {
+      const paramsChanged = !useValueCompare(params, oldParams, true);
+      if (paramsChanged) {
         localRendering.value = false;
       }
 
