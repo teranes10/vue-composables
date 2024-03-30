@@ -22,7 +22,11 @@ export function useToNumber(val: string): number {
     return 0;
   }
 
-  return val.includes(".")
-    ? parseFloat(val || "0.0")
-    : parseInt(val || "0");
+  if(val?.includes('.')){
+    const decimalVal = parseFloat(val);
+    return isNaN(decimalVal) ? 0.0 : decimalVal;
+  }
+
+  const numberVal = parseInt(val);
+  return isNaN(numberVal) ? 0 : numberVal;
 }
