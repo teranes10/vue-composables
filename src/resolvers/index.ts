@@ -3,6 +3,7 @@ export const ComposablesAutoImport = {
     "useGetAccessedProps", "useFunctionCaller", "useGetParameters",
     "useGetFromStorage", "useSetToStorage",
     "useStringTemplateWithReplacements",
+    "useNumberDiff", "useToNumericString", "useToNumber",
     "usePaginate", "usePaginationHandler", "useFilter", "useFilterAndPaginate",
     "useIsNull", "useIsNullOrEmptyObject", "useMapper", "useCloneDeep", "useCoalesce", "useCoalesceTruthy", "useObjectValueByPath",
     "useObjectAssign", "useValueAssign",
