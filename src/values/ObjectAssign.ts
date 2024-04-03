@@ -1,21 +1,13 @@
-
 export function useValueAssign(target: any, src: any, forced = false) {
     if (!src) {
-        target = undefined;
-        return;
+        return undefined;
     }
 
-    if (typeof src !== 'object') {
-        target = src;
-        return;
+    if (typeof src !== 'object' || Array.isArray(src)) {
+        return src;
     }
 
-    if (Array.isArray(src)) {
-        target = src;
-        return;
-    }
-
-    useObjectAssign(target, src, forced);
+    return useObjectAssign(target, src, forced);
 }
 
 export function useObjectAssign(target: any, src: any, forced = false) {
@@ -28,7 +20,7 @@ export function useObjectAssign(target: any, src: any, forced = false) {
             continue;
         }
 
-        useValueAssign(target[prop], src[prop], forced)
+        target[prop] = useValueAssign(target[prop], src[prop], forced)
     }
 
     return target;
