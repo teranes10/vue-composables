@@ -13,3 +13,8 @@ export { useDraggable } from './events/Draggable';
 export { useInfiniteScroll } from './events/InfiniteScroll';
 export { useEventListener, useIsEventInsideElement } from './events/EventListener';
 export { useThrottle } from './events/Throttle';
+
+export { useExportCsv } from './export/Csv';
+export { useExportDataTablePdf, useExportDataTablePrint } from './export/Pdf';
+
+export { usePopper, type Popper } from './components/Popper';

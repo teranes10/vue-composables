@@ -15,13 +15,19 @@ export const ComposablesAutoImport = {
     "useInfiniteScroll",
     "useEventListener", "useIsEventInsideElement",
     "useThrottle",
+
+    "useExportCsv",
+    "useExportDataTablePdf", "useExportDataTablePrint",
+
+    "usePopper"
   ],
 };
 
 export const ComposablesTypesAutoImport = {
   from: "@teranes/vue-composables",
   imports: [
-    'PagerLoadOptions'
+    'PagerLoadOptions',
+    'Popper'
   ],
   type: true,
 };
