@@ -18,3 +18,5 @@ export { useExportCsv } from './export/Csv';
 export { useExportDataTablePdf, useExportDataTablePrint } from './export/Pdf';
 
 export { usePopper, type Popper } from './components/Popper';
+
+export { useIsPlural, useIsSingular, usePlural, useSingular } from './values/Text'

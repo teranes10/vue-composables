@@ -19,7 +19,9 @@ export const ComposablesAutoImport = {
     "useExportCsv",
     "useExportDataTablePdf", "useExportDataTablePrint",
 
-    "usePopper"
+    "usePopper",
+
+    "useIsPlural", "useIsSingular", "usePlural", "useSingular"
   ],
 };
 
