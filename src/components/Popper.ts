@@ -1,16 +1,24 @@
 import {
   createPopper,
   Instance as PopperInstance,
-  Placement,
+  Placement
 } from "@popperjs/core";
-import { ref, Ref } from "vue";
+import { ref, Ref, onUnmounted } from "vue";
+
+export type PopperAction = 'hover' | 'click'
+export type PopperModifiers = 'same-width' | 'prevent-overflow'
+export type PopperOffset = [number, number];
 
 export type PopperInput = {
   popperEl: HTMLElement;
-  referenceEl?: Element;
+  referenceEl: Element;
   persistent?: boolean;
   placement?: Placement;
   isShowing?: Ref<boolean>;
+  activeClass?: string,
+  modifiers?: PopperModifiers[],
+  action?: PopperAction,
+  offset?: PopperOffset
 }
 
 export type Popper = {
@@ -26,14 +34,19 @@ export function usePopper({
   persistent = false,
   placement = "bottom-start",
   isShowing = ref(false),
+  modifiers = [],
+  activeClass,
+  action,
+  offset
 }: PopperInput): Popper {
   var popperInstance: PopperInstance | null;
   var isScrollDisabled = false;
   var removeHideOnOutClick: () => void;
 
-  const createPopperInstance = (reference?: Element | MouseEvent) => {
+  function createPopperInstance(reference?: Element | MouseEvent) {
     if (!popperEl) {
-      return null;
+      console.error('Popper element is not found.');
+      return;
     }
 
     let popperReference;
@@ -51,41 +64,59 @@ export function usePopper({
     }
 
     if (!popperReference) {
-      return null;
+      console.error('Popper reference is not found.');
+      return;
     }
 
-    popperInstance = createPopper(popperReference, popperEl, {
-      placement: placement,
-      modifiers: [
-        {
+    const _modifiers: any[] = [];
+    if (modifiers.length > 0 || offset) {
+      if (modifiers.includes('same-width')) {
+        _modifiers.push({
           name: "sameWidth",
           enabled: true,
           phase: "beforeWrite",
-          fn: ({ state }) => {
+          fn: ({ state }: any) => {
             state.elements.popper.style.width = `${(state.elements.reference as HTMLElement).offsetWidth
               }px`;
           },
-        },
-        {
+        })
+      }
+
+      if (modifiers.includes('prevent-overflow')) {
+        _modifiers.push({
           name: "preventOverflow",
           enabled: true,
           phase: "beforeWrite",
           options: {
             boundariesElement: popperEl.parentElement,
           },
-        },
-      ],
+        })
+      }
+
+      if (offset) {
+        _modifiers.push({
+          name: 'offset',
+          options: {
+            offset: offset,
+          },
+        })
+      }
+    }
+
+    popperInstance = createPopper(popperReference, popperEl, {
+      placement: placement,
+      modifiers: _modifiers,
     });
   };
 
-  const destroy = () => {
+  function destroy() {
     if (popperInstance) {
       popperInstance.destroy();
       popperInstance = null;
     }
   };
 
-  const show = (reference?: Element | MouseEvent) => {
+  function show(reference?: Element | MouseEvent) {
     if (isShowing.value) {
       return;
     }
@@ -96,7 +127,12 @@ export function usePopper({
 
     createPopperInstance(reference);
     if (popperInstance && popperEl) {
-      popperEl.classList.add("show");
+      if (activeClass) {
+        popperEl.classList.add(activeClass);
+      } else {
+        popperEl.style.display = 'block'
+      }
+
       isShowing.value = true;
 
       if (!persistent) {
@@ -112,13 +148,18 @@ export function usePopper({
     }
   };
 
-  const hide = () => {
+  function hide() {
     if (!isShowing.value) {
       return;
     }
 
     if (popperEl) {
-      popperEl.classList.remove("show");
+      if (activeClass) {
+        popperEl.classList.remove(activeClass);
+      } else {
+        popperEl.style.display = 'none'
+      }
+
       isShowing.value = false;
     }
 
@@ -131,7 +172,7 @@ export function usePopper({
     }
   };
 
-  const toggle = (reference?: Element | MouseEvent) => {
+  function toggle(reference?: Element | MouseEvent) {
     if (isShowing.value) {
       hide();
     } else {
@@ -139,7 +180,7 @@ export function usePopper({
     }
   };
 
-  const hideOnOutClick = (referenceEl?: Element) => {
+  function hideOnOutClick(referenceEl?: Element) {
     const close = (e: MouseEvent) => {
       const outSidePopper = popperEl && !popperEl.contains(e.target as Node);
       const outSideReference =
@@ -161,17 +202,17 @@ export function usePopper({
     };
   };
 
-  const disableScroll = () => {
+  function disableScroll() {
     document.body.style.overflow = "hidden";
     isScrollDisabled = true;
   };
 
-  const enableScroll = () => {
+  function enableScroll() {
     document.body.style.overflow = "auto";
     isScrollDisabled = false;
   };
 
-  const generateGetBoundingClientRect = (x = 0, y = 0) => {
+  function generateGetBoundingClientRect(x = 0, y = 0) {
     return (): DOMRect => ({
       width: 0,
       height: 0,
@@ -184,6 +225,43 @@ export function usePopper({
       toJSON: () => "",
     });
   };
+
+  if (!activeClass) {
+    popperEl.style.display = 'none'
+  }
+
+  const clearFunctions: (() => void)[] = [];
+
+  if (action) {
+    if (action === 'click') {
+      const clickListener = () => { toggle(); }
+
+      referenceEl.addEventListener('click', clickListener);
+      clearFunctions.push(() => {
+        referenceEl.removeEventListener('click', clickListener);
+      })
+    }
+
+    if (action === 'hover') {
+      const mouseenterListener = () => { show(); }
+      const mouseleaveListener = () => { hide(); }
+
+      referenceEl.addEventListener('mouseenter', mouseenterListener)
+      clearFunctions.push(() => {
+        referenceEl.removeEventListener('mouseenter', mouseenterListener)
+      })
+
+      referenceEl.addEventListener('mouseleave', mouseleaveListener)
+      clearFunctions.push(() => {
+        referenceEl.removeEventListener('mouseleave', mouseleaveListener)
+      })
+    }
+  }
+
+  onUnmounted(() => {
+    destroy();
+    clearFunctions.forEach(clear => clear());
+  })
 
   return { show, hide, toggle, destroy };
 }
