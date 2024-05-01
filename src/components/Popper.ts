@@ -18,7 +18,8 @@ export type PopperInput = {
   activeClass?: string,
   modifiers?: PopperModifiers[],
   action?: PopperAction,
-  offset?: PopperOffset
+  offset?: PopperOffset,
+  duplicates?: boolean
 }
 
 export type Popper = {
@@ -37,9 +38,11 @@ export function usePopper({
   modifiers = [],
   activeClass,
   action,
-  offset
+  offset,
+  duplicates = false
 }: PopperInput): Popper {
   var popperInstance: PopperInstance | null;
+  var popperElement: HTMLElement
   var isScrollDisabled = false;
   var removeHideOnOutClick: () => void;
 
@@ -47,6 +50,14 @@ export function usePopper({
     if (!popperEl) {
       console.error('Popper element is not found.');
       return;
+    }
+
+    if (duplicates) {
+      const container = popperContainer();
+      popperElement = popperEl.cloneNode(true) as HTMLElement;
+      container.append(popperElement);
+    } else {
+      popperElement = popperEl;
     }
 
     let popperReference;
@@ -67,6 +78,8 @@ export function usePopper({
       console.error('Popper reference is not found.');
       return;
     }
+    console.log(popperReference);
+
 
     const _modifiers: any[] = [];
     if (modifiers.length > 0 || offset) {
@@ -88,7 +101,7 @@ export function usePopper({
           enabled: true,
           phase: "beforeWrite",
           options: {
-            boundariesElement: popperEl.parentElement,
+            boundariesElement: popperElement.parentElement,
           },
         })
       }
@@ -103,13 +116,17 @@ export function usePopper({
       }
     }
 
-    popperInstance = createPopper(popperReference, popperEl, {
+    popperInstance = createPopper(popperReference, popperElement, {
       placement: placement,
       modifiers: _modifiers,
     });
   };
 
   function destroy() {
+    if (popperElement) {
+      popperElement.remove()
+    }
+
     if (popperInstance) {
       popperInstance.destroy();
       popperInstance = null;
@@ -126,11 +143,11 @@ export function usePopper({
     }
 
     createPopperInstance(reference);
-    if (popperInstance && popperEl) {
+    if (popperInstance && popperElement) {
       if (activeClass) {
-        popperEl.classList.add(activeClass);
+        popperElement.classList.add(activeClass);
       } else {
-        popperEl.style.display = 'block'
+        popperElement.style.display = 'block'
       }
 
       isShowing.value = true;
@@ -153,11 +170,11 @@ export function usePopper({
       return;
     }
 
-    if (popperEl) {
+    if (popperElement) {
       if (activeClass) {
-        popperEl.classList.remove(activeClass);
+        popperElement.classList.remove(activeClass);
       } else {
-        popperEl.style.display = 'none'
+        popperElement.style.display = 'none'
       }
 
       isShowing.value = false;
@@ -182,7 +199,7 @@ export function usePopper({
 
   function hideOnOutClick(referenceEl?: Element) {
     const close = (e: MouseEvent) => {
-      const outSidePopper = popperEl && !popperEl.contains(e.target as Node);
+      const outSidePopper = popperElement && !popperElement.contains(e.target as Node);
       const outSideReference =
         referenceEl && !referenceEl.contains(e.target as Node);
 
@@ -224,6 +241,17 @@ export function usePopper({
       left: x,
       toJSON: () => "",
     });
+  };
+
+  function popperContainer() {
+    let container = document.getElementById("popper-container");
+    if (!container) {
+      container = document.createElement("div");
+      container.id = "popper-container";
+      document.getElementById("app")?.append(container);
+    }
+
+    return container;
   };
 
   if (!activeClass) {
