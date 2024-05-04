@@ -13,9 +13,11 @@ export type PdfWaterMarkLink = {
 }
 
 export type DataTablePdfOptions = {
+    title?: string
     orientation?: PdfOrientation,
     fontSize?: number,
-    waterMarkLink?: PdfWaterMarkLink
+    waterMarkLink?: PdfWaterMarkLink,
+    margin?: number
 }
 
 export type PdfTableHeader<T = any> = {
@@ -35,9 +37,18 @@ const getValue = (item: any, value: any) => {
 async function dataTablePdf(headers: PdfTableHeader[], items: any[], {
     orientation = 'landscape',
     fontSize = 8,
-    waterMarkLink = undefined
+    margin = 10,
+    title,
+    waterMarkLink
 }: DataTablePdfOptions = {}) {
     const pdf = new jsPDF({ orientation });
+
+    pdf.setFontSize(18);
+    pdf.setTextColor(74, 84, 99)
+
+    if (title) {
+        pdf.text(title, margin, margin + 2)
+    }
 
     const _headers = ['#', ...headers.map(x => x.name)];
     const _values = [];
@@ -66,12 +77,14 @@ async function dataTablePdf(headers: PdfTableHeader[], items: any[], {
     }
 
     autoTable(pdf, {
+        startY: title ? 16 : margin,
         theme: 'grid',
         styles: { overflow: "linebreak", fontSize, minCellHeight: 10 },
         headStyles: { valign: 'middle' },
         bodyStyles: { valign: 'middle' },
         head: [_headers],
         body: _values,
+        margin: { top: margin, bottom: margin, left: margin, right: margin },
         didDrawCell: function (data) {
             if (data.section === 'body' && data.column.index > 0) {
                 const key = `${data.row.index},${data.column.index - 1}`;
@@ -91,10 +104,10 @@ async function dataTablePdf(headers: PdfTableHeader[], items: any[], {
         var pageWidth = pageSize.width;
         var pageHeight = pageSize.height;
 
-        const waterMarkLinkFontSize = waterMarkLink.fontSize || 16;
+        const waterMarkLinkFontSize = waterMarkLink.fontSize || 18;
         const waterMarkLinkWidth = pdf.getStringUnitWidth(waterMarkLink.text) * waterMarkLinkFontSize / pdf.internal.scaleFactor;
-        const waterMarkLinkX = pageWidth - waterMarkLinkWidth - 5;
-        const waterMarkLinkY = pageHeight - 5;
+        const waterMarkLinkX = pageWidth - waterMarkLinkWidth - margin;
+        const waterMarkLinkY = pageHeight - margin;
 
         pdf.textWithLink(waterMarkLink.text, waterMarkLinkX, waterMarkLinkY, { url: waterMarkLink.url });
     }
@@ -107,12 +120,14 @@ export type ExportPdfOptions = DataTablePdfOptions & {
 }
 
 export async function useExportDataTablePdf(headers: PdfTableHeader[], items: any[], {
-    orientation = 'landscape',
     fileName = "export.pdf",
-    fontSize = 8,
-    waterMarkLink = undefined
+    title,
+    orientation,
+    fontSize,
+    margin,
+    waterMarkLink
 }: ExportPdfOptions = {}) {
-    const pdf = await dataTablePdf(headers, items, { orientation, fontSize, waterMarkLink })
+    const pdf = await dataTablePdf(headers, items, { title, margin, orientation, fontSize, waterMarkLink })
     pdf.save(fileName);
 }
 
@@ -121,11 +136,13 @@ export type ExportPrintOptions = DataTablePdfOptions & {
 }
 
 export async function useExportDataTablePrint(headers: PdfTableHeader[], items: any[], {
-    orientation = 'landscape',
-    fontSize = 8,
-    waterMarkLink = undefined
+    title,
+    orientation,
+    fontSize,
+    margin,
+    waterMarkLink
 }: ExportPrintOptions = {}) {
-    const pdf = await dataTablePdf(headers, items, { orientation, fontSize, waterMarkLink })
+    const pdf = await dataTablePdf(headers, items, { title, margin, orientation, fontSize, waterMarkLink })
     pdf.autoPrint();
     pdf.output('dataurlnewwindow');
 }
