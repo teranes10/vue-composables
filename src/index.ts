@@ -16,6 +16,7 @@ export { useThrottle } from './events/Throttle';
 
 export { useExportCsv } from './export/Csv';
 export { useExportDataTablePdf, useExportDataTablePrint } from './export/Pdf';
+export { useGetBackgroundColor, useHtmlToImage } from './export/Image'
 
 export { usePopper, type Popper } from './components/Popper';
 

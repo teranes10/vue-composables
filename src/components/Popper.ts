@@ -78,8 +78,6 @@ export function usePopper({
       console.error('Popper reference is not found.');
       return;
     }
-    console.log(popperReference);
-
 
     const _modifiers: any[] = [];
     if (modifiers.length > 0 || offset) {
@@ -248,7 +246,7 @@ export function usePopper({
     if (!container) {
       container = document.createElement("div");
       container.id = "popper-container";
-      document.getElementById("app")?.append(container);
+      document.body.append(container);
     }
 
     return container;

@@ -18,6 +18,7 @@ export const ComposablesAutoImport = {
 
     "useExportCsv",
     "useExportDataTablePdf", "useExportDataTablePrint",
+    "useGetBackgroundColor", "useHtmlToImage",
 
     "usePopper",
 
