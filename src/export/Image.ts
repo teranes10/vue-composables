@@ -6,7 +6,8 @@ export type HtmlToImageOptions = {
     background?: string;
     skipFonts?: boolean;
     cacheBust?: boolean;
-    delay?: number
+    delay?: number;
+    style?: Partial<CSSStyleDeclaration>
 }
 
 export type Image = {
@@ -16,7 +17,7 @@ export type Image = {
     aspectRadio: number;
 }
 
-export function useHtmlToImage(component: VNodeTypes, { background = "#ffffff", skipFonts = true, cacheBust = true, delay = 1 }: HtmlToImageOptions = {}): Promise<Image> {
+export function useHtmlToImage(component: VNodeTypes, { background = "#ffffff", skipFonts = true, cacheBust = true, delay = 1, style }: HtmlToImageOptions = {}): Promise<Image> {
     return new Promise((resolve, reject) => {
         try {
             const vNode = defineComponent({
@@ -47,7 +48,12 @@ export function useHtmlToImage(component: VNodeTypes, { background = "#ffffff", 
                         }
                     }, delay))
 
-                    return () => h('div', { ref: contentEl, style: { display: 'inline-flex', background } }, h(component as any));
+                    return () => h('div', {
+                        ref: contentEl, style: {
+                            display: 'inline-flex', background,
+                            ...(style && style)
+                        }
+                    }, h(component as any));
                 }
             })
 

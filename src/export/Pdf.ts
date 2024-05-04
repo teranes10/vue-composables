@@ -36,18 +36,20 @@ const getValue = (item: any, value: any) => {
 
 async function dataTablePdf(headers: PdfTableHeader[], items: any[], {
     orientation = 'landscape',
-    fontSize = 8,
-    margin = 10,
+    fontSize = 14,
+    margin = 15,
     title,
     waterMarkLink
 }: DataTablePdfOptions = {}) {
-    const pdf = new jsPDF({ orientation });
-
-    pdf.setFontSize(18);
-    pdf.setTextColor(74, 84, 99)
+    const pdf = new jsPDF({ orientation, format: 'a4', unit: 'px', userUnit: 96 });
+    const titleFontSize = 18;
+    const cellHeight = 25;
+    const cellPadding = 3.5;
 
     if (title) {
-        pdf.text(title, margin, margin + 2)
+        pdf.setFontSize(titleFontSize);
+        pdf.setTextColor(74, 84, 99)
+        pdf.text(title, margin, margin + titleFontSize / 2)
     }
 
     const _headers = ['#', ...headers.map(x => x.name)];
@@ -64,7 +66,14 @@ async function dataTablePdf(headers: PdfTableHeader[], items: any[], {
             let value: any = '';
 
             if (header?.component) {
-                const dataUrl = await useHtmlToImage(header.component(item));
+                const dataUrl = await useHtmlToImage(header.component(item), {
+                    style: {
+                        fontSize: `${fontSize}px`,
+                        display: "inline-flex",
+                        alignItems: "center",
+                        height: `${(cellHeight - (cellPadding * 2)) * 2}px`
+                    }
+                });
                 mapping.set(`${i},${j}`, dataUrl);
             } else {
                 value = header?.value ? getValue(item, header.value)?.toString() || '' : "";
@@ -77,38 +86,41 @@ async function dataTablePdf(headers: PdfTableHeader[], items: any[], {
     }
 
     autoTable(pdf, {
-        startY: title ? 16 : margin,
+        startY: title ? margin + titleFontSize : margin,
         theme: 'grid',
-        styles: { overflow: "linebreak", fontSize, minCellHeight: 10 },
+        styles: { overflow: "linebreak", fontSize, minCellHeight: cellHeight, cellPadding: { vertical: cellPadding, horizontal: cellPadding } },
         headStyles: { valign: 'middle' },
         bodyStyles: { valign: 'middle' },
         head: [_headers],
         body: _values,
-        margin: { top: margin, bottom: margin, left: margin, right: margin },
+        margin: { vertical: margin, horizontal: margin },
         didDrawCell: function (data) {
             if (data.section === 'body' && data.column.index > 0) {
                 const key = `${data.row.index},${data.column.index - 1}`;
                 const img = mapping.get(key);
                 if (img) {
                     const textPos = data.cell.getTextPos();
-                    const height = data.cell.height - data.cell.padding('vertical');
+                    const height = cellHeight - (cellPadding * 2);
+                    const width = img.aspectRadio * height;
 
-                    pdf.addImage(img.dataUrl, textPos.x, textPos.y - height / 2, img.aspectRadio * height, height)
+                    pdf.addImage(img.dataUrl, textPos.x, textPos.y - height / 2, width, height)
                 }
             }
         }
     });
 
     if (waterMarkLink) {
-        var pageSize = pdf.internal.pageSize;
-        var pageWidth = pageSize.width;
-        var pageHeight = pageSize.height;
+        const pageSize = pdf.internal.pageSize;
+        const pageWidth = pageSize.width;
+        const pageHeight = pageSize.height;
 
-        const waterMarkLinkFontSize = waterMarkLink.fontSize || 18;
+        const waterMarkLinkFontSize = waterMarkLink.fontSize || 16;
         const waterMarkLinkWidth = pdf.getStringUnitWidth(waterMarkLink.text) * waterMarkLinkFontSize / pdf.internal.scaleFactor;
         const waterMarkLinkX = pageWidth - waterMarkLinkWidth - margin;
         const waterMarkLinkY = pageHeight - margin;
 
+        pdf.setFontSize(waterMarkLinkFontSize);
+        pdf.setTextColor(74, 84, 99)
         pdf.textWithLink(waterMarkLink.text, waterMarkLinkX, waterMarkLinkY, { url: waterMarkLink.url });
     }
 
