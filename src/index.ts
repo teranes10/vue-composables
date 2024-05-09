@@ -6,6 +6,7 @@ export { usePaginate, usePaginationHandler, useFilter, useFilterAndPaginate, typ
 export { useIsNull, useIsNullOrEmptyObject, useMapper, useCloneDeep, useCoalesce, useCoalesceTruthy, useObjectValueByPath } from './values/Object';
 export { useObjectAssign, useValueAssign } from './values/ObjectAssign';
 export { useObjectCompare, useArrayCompare, useValueCompare } from './values/ObjectCompare'
+export { useShortUniqueId } from './values/Unique'
 export { useVModel } from './values/VueExtensions';
 
 export { useDebounce } from './events/Debounce';

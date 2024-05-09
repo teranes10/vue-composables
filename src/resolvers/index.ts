@@ -8,6 +8,7 @@ export const ComposablesAutoImport = {
     "useIsNull", "useIsNullOrEmptyObject", "useMapper", "useCloneDeep", "useCoalesce", "useCoalesceTruthy", "useObjectValueByPath",
     "useObjectAssign", "useValueAssign",
     "useObjectCompare", "useArrayCompare", "useValueCompare",
+    "useShortUniqueId",
     "useVModel",
 
     "useDebounce",
