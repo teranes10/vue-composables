@@ -121,7 +121,7 @@ export function usePopper({
   };
 
   function destroy() {
-    if (popperElement) {
+    if (duplicates && popperElement) {
       popperElement.remove()
     }
 
@@ -140,7 +140,10 @@ export function usePopper({
       destroy();
     }
 
-    createPopperInstance(reference);
+    if (!popperInstance) {
+      createPopperInstance(reference);
+    }
+
     if (popperInstance && popperElement) {
       if (activeClass) {
         popperElement.classList.add(activeClass);
