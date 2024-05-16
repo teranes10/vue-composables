@@ -10,7 +10,7 @@ export function useVModel<
   key: K,
   emit?: (name: Name, ...args: any[]) => void,
   defaultValue?: P[K]
-) {
+): Ref<NonNullable<P[K]>> {
   const isDef = <T = any>(val?: T): val is T => typeof val !== "undefined";
   const getInitialValue = () => {
     if (isDef(props[key]) && typeof props[key] === 'boolean') {

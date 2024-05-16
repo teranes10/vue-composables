@@ -14,8 +14,9 @@ export function usePaginationHandler<T>(
   const internalTotalItems = ref(0);
 
   const setData = (items: T[], totalItems: number, invalidate = false) => {
-    if (serverSideRendering.value && storePreviousItems) {
-      if (page.value === 1 || invalidate) {
+
+    if (storePreviousItems) {
+      if (invalidate) {
         storedItems.value = [];
       }
 
@@ -33,7 +34,6 @@ export function usePaginationHandler<T>(
 
   const load = () => {
     isLoading.value = true;
-    setData([], 0, true);
 
     if (localRendering.value || !serverSideRendering.value) {
       const pagination = useFilterAndPaginate(items.value, {
@@ -90,13 +90,9 @@ export function usePaginationHandler<T>(
         page.value = 1;
       }
 
-      if (page.value === 1) {
-        storedItems.value = [];
-      }
+      setData([], 0, isSearching.value || page.value == 1)
 
       isWaiting.value = true;
-      setData([], 0, true)
-
       clearTimeout(waitingTimer.value);
       waitingTimer.value = setTimeout(() => {
         isWaiting.value = false;
@@ -112,6 +108,7 @@ export function usePaginationHandler<T>(
         localRendering.value = false;
       }
 
+      setData([], 0, true)
       load()
     }, { immediate: true, deep: true })
 
@@ -123,6 +120,7 @@ export function usePaginationHandler<T>(
     isSearching,
     notifyDataSetChanged: () => {
       page.value = 1;
+      setData([], 0, true)
       load();
     }
   };
