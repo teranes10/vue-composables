@@ -23,8 +23,10 @@ export function useDraggable(
         _x = e.clientX - el.offsetLeft;
         _y = e.clientY - el.offsetTop;
 
-        (containerEl || document).onmouseup = closeDragElement;
-        (containerEl || document).onmousemove = elementDrag;
+        if (containerEl || document) {
+            (containerEl || document).onmouseup = closeDragElement;
+            (containerEl || document).onmousemove = elementDrag;
+        }
     }
 
     function elementDrag(e: MouseEvent) {
@@ -48,7 +50,9 @@ export function useDraggable(
     }
 
     function closeDragElement() {
-        (containerEl || document).onmouseup = null;
-        (containerEl || document).onmousemove = null;
+        if (containerEl || document) {
+            (containerEl || document).onmouseup = null;
+            (containerEl || document).onmousemove = null;
+        }
     }
 }

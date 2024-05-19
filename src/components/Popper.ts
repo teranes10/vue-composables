@@ -54,8 +54,10 @@ export function usePopper({
 
     if (duplicates) {
       const container = popperContainer();
-      popperElement = popperEl.cloneNode(true) as HTMLElement;
-      container.append(popperElement);
+      if (container) {
+        popperElement = popperEl.cloneNode(true) as HTMLElement;
+        container.append(popperElement);
+      }
     } else {
       popperElement = popperEl;
     }
@@ -210,24 +212,32 @@ export function usePopper({
     };
 
     setTimeout(() => {
-      document.addEventListener("click", close);
-      document.addEventListener("contextmenu", close);
+      if (document) {
+        document.addEventListener("click", close);
+        document.addEventListener("contextmenu", close);
+      }
     }, 50);
 
     return () => {
-      document.removeEventListener("click", close);
-      document.removeEventListener("contextmenu", close);
+      if (document) {
+        document.removeEventListener("click", close);
+        document.removeEventListener("contextmenu", close);
+      }
     };
   };
 
   function disableScroll() {
-    document.body.style.overflow = "hidden";
-    isScrollDisabled = true;
+    if (document) {
+      document.body.style.overflow = "hidden";
+      isScrollDisabled = true;
+    }
   };
 
   function enableScroll() {
-    document.body.style.overflow = "auto";
-    isScrollDisabled = false;
+    if (document) {
+      document.body.style.overflow = "auto";
+      isScrollDisabled = false;
+    }
   };
 
   function generateGetBoundingClientRect(x = 0, y = 0) {
@@ -244,15 +254,19 @@ export function usePopper({
     });
   };
 
-  function popperContainer() {
-    let container = document.getElementById("popper-container");
-    if (!container) {
-      container = document.createElement("div");
-      container.id = "popper-container";
-      document.body.append(container);
+  function popperContainer(): HTMLElement | undefined {
+    if (document) {
+      let container = document.getElementById("popper-container");
+      if (!container) {
+        container = document.createElement("div");
+        container.id = "popper-container";
+        document.body.append(container);
+      }
+
+      return container;
     }
 
-    return container;
+    return undefined;
   };
 
   if (!activeClass) {

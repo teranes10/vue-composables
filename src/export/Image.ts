@@ -59,7 +59,9 @@ export function useHtmlToImage(component: VNodeTypes, { background = "#ffffff", 
 
             const node = createVNode(vNode);
             const container = getContainer();
-            render(node, container);
+            if (node && container) {
+                render(node, container);
+            }
         } catch (error) {
             reject(error)
         }
@@ -80,24 +82,28 @@ export function useGetBackgroundColor(element: Element) {
     return '#ffffff';
 }
 
-const getContainer = () => {
-    let container = document.getElementById("renderer-container");
+const getContainer = (): HTMLElement | undefined => {
+    if (document) {
+        let container = document.getElementById("renderer-container");
 
-    if (!container) {
-        container = document.createElement("div");
-        container.id = "renderer-container";
-        container.style.position = 'absolute';
-        container.style.width = '1px';
-        container.style.height = '1px';
-        container.style.padding = '0';
-        container.style.margin = '-1px';
-        container.style.overflow = 'hidden';
-        container.style.clip = 'rect(0, 0, 0, 0)';
-        container.style.whiteSpace = 'nowrap';
-        container.style.borderWidth = '0';
+        if (!container) {
+            container = document.createElement("div");
+            container.id = "renderer-container";
+            container.style.position = 'absolute';
+            container.style.width = '1px';
+            container.style.height = '1px';
+            container.style.padding = '0';
+            container.style.margin = '-1px';
+            container.style.overflow = 'hidden';
+            container.style.clip = 'rect(0, 0, 0, 0)';
+            container.style.whiteSpace = 'nowrap';
+            container.style.borderWidth = '0';
 
-        document.body.append(container);
+            document.body.append(container);
+        }
+
+        return container;
     }
 
-    return container;
+    return undefined;
 };
