@@ -1,4 +1,4 @@
-import { unparse } from "papaparse";
+import papa from "papaparse";
 
 export type ExportCsvOptions = {
     fileName?: string
@@ -17,5 +17,5 @@ export function useExportCsv(data: any[], { fileName = 'export.csv' }: ExportCsv
 }
 
 export function useJsonToCsv(data: any[]) {
-    return unparse(data);
+    return papa.unparse(data);
 }

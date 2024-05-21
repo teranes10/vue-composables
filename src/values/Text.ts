@@ -1,17 +1,17 @@
-import { isPlural, plural, isSingular, singular } from 'pluralize'
+import pluralize from 'pluralize'
 
 export function useIsPlural(word: string) {
-    return isPlural(word)
+    return pluralize.isPlural(word)
 }
 
 export function usePlural(word: string) {
-    return plural(word)
+    return pluralize.plural(word)
 }
 
 export function useIsSingular(word: string) {
-    return isSingular(word)
+    return pluralize.isSingular(word)
 }
 
 export function useSingular(word: string) {
-    return singular(word)
+    return pluralize.singular(word)
 }
