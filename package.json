@@ -1,6 +1,6 @@
 {
   "name": "@teranes/vue-composables",
-  "version": "3.0.18",
+  "version": "3.0.19",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -44,7 +44,9 @@
   "license": "MIT",
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "dayjs": "^1.11.11",
     "html-to-image": "^1.11.11",
+    "json-string-formatter": "^1.0.1",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
     "lodash-es": "^4.17.21",
