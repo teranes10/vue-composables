@@ -11,10 +11,6 @@ export function useToCamelCaseJson(json: any) {
     });
 }
 
-export function useToJsonStringFormatter(json: any) {
-    if (typeof json !== 'object') {
-        return '';
-    }
-
-    return jsonFormatter(json);
+export function useToJsonStringFormatter(jsonString: string) {
+    return jsonFormatter(jsonString);
 }
