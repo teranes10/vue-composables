@@ -23,6 +23,6 @@ export { usePopper, type Popper } from './components/Popper';
 
 export { useIsPlural, useIsSingular, usePlural, useSingular } from './values/Text'
 
-export { useToCamelCaseJson, useToJsonStringFormatter } from './values/Json';
+export { useToCamelCaseJson, useJsonStringFormatter } from './values/Json';
 
 export { useDate, useIsValidDate } from './values/DateTime'

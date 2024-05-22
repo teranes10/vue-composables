@@ -1,6 +1,6 @@
 import dayjs, { type Dayjs } from "dayjs";
-import utc from "dayjs/plugin/utc";
-import advancedFormat from 'dayjs/plugin/advancedFormat';
+import utc from "dayjs/plugin/utc.js";
+import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 
 dayjs.extend(utc);
 dayjs.extend(advancedFormat);
