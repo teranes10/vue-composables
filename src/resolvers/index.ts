@@ -24,7 +24,7 @@ export const ComposablesAutoImport = {
     "usePopper",
 
     "useIsPlural", "useIsSingular", "usePlural", "useSingular",
-    "useToCamelCaseJson", "useJsonStringFormatter",
+    "useCamelCaseJson", "useJsonStringFormatter",
     "useDate", "useIsValidDate"
   ],
 };
