@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
 
-export function useShortUniqueId() {
-    return nanoid();
+export function useShortUniqueId(size?: number) {
+    return nanoid(size);
 }
