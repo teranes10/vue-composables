@@ -3,6 +3,8 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
     entry: ['src/index.ts', 'src/resolvers/resolver.ts'],
     format: ['esm', 'cjs'],
+    target: 'esnext',
+    platform: 'browser',
     dts: true,
     minify: true,
     splitting: true,
