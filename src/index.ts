@@ -25,4 +25,4 @@ export { useIsPlural, useIsSingular, usePlural, useSingular } from './values/Tex
 
 export { useCamelCaseJson, useJsonStringFormatter } from './values/Json';
 
-export { useDate, useParseDate, useIsValidDate } from './values/DateTime'
+export { useDate, useIsValidDate } from './values/DateTime'
