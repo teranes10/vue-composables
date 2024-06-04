@@ -1,10 +1,10 @@
 {
   "name": "@teranes/vue-composables",
-  "version": "3.0.26",
+  "version": "3.0.30",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -12,22 +12,10 @@
       "require": "./dist/index.cjs"
     },
     "./resolver": {
-      "types": "./dist/resolvers/index.d.ts",
-      "import": "./dist/resolvers/index.js",
-      "require": "./dist/resolvers/index.cjs"
+      "types": "./dist/resolvers/resolver.d.ts",
+      "import": "./dist/resolvers/resolver.js",
+      "require": "./dist/resolvers/resolver.cjs"
     }
-  },
-  "tsup": {
-    "entry": [
-      "src/**/*.ts"
-    ],
-    "format": [
-      "esm",
-      "cjs"
-    ],
-    "dts": true,
-    "splitting": true,
-    "clean": true
   },
   "scripts": {
     "build": "tsup"
@@ -42,8 +30,12 @@
   "keywords": [],
   "author": "Teranes",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "@popperjs/core": "^2.11.8",
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^20.11.26",
+    "@types/papaparse": "^5.3.14",
+    "@types/pluralize": "^0.0.33",
     "dayjs": "^1.11.11",
     "html-to-image": "^1.11.11",
     "json-string-formatter": "^1.0.1",
@@ -53,15 +45,10 @@
     "nanoid": "^5.0.7",
     "papaparse": "^5.4.1",
     "pluralize": "^8.0.0",
-    "vue": "^3.4.21"
-  },
-  "devDependencies": {
-    "@types/lodash-es": "^4.17.12",
-    "@types/node": "^20.11.26",
-    "@types/papaparse": "^5.3.14",
-    "@types/pluralize": "^0.0.33",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.2"
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.2",
+    "unplugin-auto-import": "^0.17.6",
+    "vue": "^3.4.27"
   },
   "description": ""
 }

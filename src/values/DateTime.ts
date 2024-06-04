@@ -1,17 +1,21 @@
 import dayjs, { type Dayjs } from "dayjs";
 import utc from "dayjs/plugin/utc.js";
 import advancedFormat from 'dayjs/plugin/advancedFormat.js';
+import customParseFormat from 'dayjs/plugin/customParseFormat.js';
 
 dayjs.extend(utc);
 dayjs.extend(advancedFormat);
+dayjs.extend(customParseFormat);
 
 type DateTimeFormat = "YYYY-MM-DDTHH:mm:ss" | 'h:mm:ss a, Do MMM YYYY' | (string & {});
-type DateFormat = 'YYYY-MM-DD' | 'Do MMM YYYY' | "DD MMMM, YYYY" | (string & {});
+type DateFormat = 'YYYY-MM-DD' | 'DD/MM/YYYY' | 'Do MMM YYYY' | "DD MMMM, YYYY" | (string & {});
 type TimeFormat = 'HH:mm:ss' | 'h:mm:ss a' | (string & {});
+type AnyDateFormat = DateTimeFormat | DateFormat | TimeFormat
 
 export type DateOptions = {
     date?: string | number | Date,
-    format?: DateTimeFormat | DateFormat | TimeFormat,
+    parseFormat?: AnyDateFormat,
+    format?: AnyDateFormat,
     utc?: boolean,
     returnObject?: boolean
 }
@@ -20,6 +24,7 @@ export function useDate(options?: DateOptions & { returnObject?: false }): strin
 export function useDate(options?: DateOptions & { returnObject?: true }): Dayjs;
 export function useDate({
     date,
+    parseFormat,
     format = 'YYYY-MM-DDTHH:mm:ss',
     utc = false,
     returnObject = false
@@ -30,7 +35,7 @@ export function useDate({
         }
     }
 
-    const time = utc ? dayjs.utc(date) : dayjs(date);
+    const time = utc ? dayjs.utc(date, parseFormat) : dayjs(date, parseFormat);
 
     if (returnObject) {
         time;
