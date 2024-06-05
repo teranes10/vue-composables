@@ -5,11 +5,11 @@ export default defineConfig({
     format: ['esm', 'cjs'],
     target: 'esnext',
     platform: 'browser',
-    dts: true,
+    dts: {
+        entry: 'src/index.ts', resolve: true,
+    },
+    external: ["vue"],
     minify: true,
     splitting: true,
     clean: true,
-    esbuildOptions: (options) => {
-        options.external = ['vue'];
-    },
 });
