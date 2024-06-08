@@ -1,6 +1,6 @@
 {
   "name": "@teranes/vue-composables",
-  "version": "4.0.5",
+  "version": "4.0.7",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -50,5 +50,8 @@
     "unplugin-auto-import": "^0.17.6",
     "vue": "^3.4.27"
   },
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "tsx": "^4.14.0"
+  }
 }

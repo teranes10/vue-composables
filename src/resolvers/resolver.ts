@@ -26,7 +26,8 @@ export const ComposablesAutoImport = {
     "useIsPlural", "useIsSingular", "usePlural", "useSingular",
     "useCamelCaseJson", "useJsonStringFormatter",
     "useDate", "useIsValidDate",
-    "useCsvReader"
+    "useCsvReader",
+    "useHexColorShade", "useHexToFilter", "useHexToHsl", "useHslToFilter", "useHslToHex"
   ],
 };
 

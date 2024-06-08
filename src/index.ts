@@ -28,3 +28,5 @@ export { useCamelCaseJson, useJsonStringFormatter } from './values/Json';
 export { useDate, useIsValidDate } from './values/DateTime'
 
 export { useCsvReader } from './values/Csv'
+
+export { useHexColorShade, useHexToFilter, useHexToHsl, useHslToFilter, useHslToHex } from './values/Color'
