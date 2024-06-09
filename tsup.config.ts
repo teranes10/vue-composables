@@ -6,7 +6,7 @@ export default defineConfig({
     target: 'esnext',
     platform: 'browser',
     dts: {
-        entry: 'src/index.ts', resolve: true,
+        resolve: true,
     },
     external: ["vue"],
     minify: true,
