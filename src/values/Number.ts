@@ -13,7 +13,7 @@ export function useNumberDiff(n1: number, n2: number): number {
 }
 
 export function useToNumericString(val: string): string {
-  return val?.replace(/[^0-9.]/g, "")?.replace(/(\..*)\./g, "$1") || '';
+  return val?.replace(/(?!^-)[^0-9.]/g, "")?.replace(/(\..*)\./g, "$1")?.replace(/(?!^)-/g, "") || '';
 }
 
 export function useToFormattedNumericString(val: string): string {
