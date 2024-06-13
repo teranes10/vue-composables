@@ -30,7 +30,7 @@ export function useDate({
     returnObject = false
 }: DateOptions = {}): string | Dayjs | undefined {
     if (date) {
-        if (!useIsValidDate(date)) {
+        if (!useIsValidDate(date, parseFormat)) {
             return returnObject ? undefined : '';
         }
     }
@@ -38,16 +38,16 @@ export function useDate({
     const time = utc ? dayjs.utc(date, parseFormat) : dayjs(date, parseFormat);
 
     if (returnObject) {
-        time;
+        return time;
     }
 
     return time.format(format);
 }
 
-export function useIsValidDate(date: string | number | Date) {
+export function useIsValidDate(date: string | number | Date, parseFormat?: string) {
     if (!date) {
         return false;
     }
 
-    return dayjs(date).isValid();
+    return dayjs(date, parseFormat).isValid();
 }
