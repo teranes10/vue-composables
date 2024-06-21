@@ -1,17 +1,17 @@
-import { mapKeys, mapValues, camelCase, isPlainObject, isArray } from "lodash-es";
-import { format as jsonFormatter } from 'json-string-formatter'
+import { useMapKeys, useMapValues, useIsPlainObject, useIsArray } from './Object'
+import { useCamelCase } from './String'
+
+export { format as useJsonStringFormatter } from 'json-string-formatter'
 
 export function useCamelCaseJson(json: any): any {
-    if (isArray(json)) {
+    if (useIsArray(json)) {
         return json.map(useCamelCaseJson);
-    } else if (isPlainObject(json)) {
-        const newObj = mapKeys(json, (value, key) => camelCase(key));
-        return mapValues(newObj, useCamelCaseJson);
+    }
+
+    if (useIsPlainObject(json)) {
+        const newObj = useMapKeys(json, (_, key) => useCamelCase(key));
+        return useMapValues(newObj, useCamelCaseJson);
     }
 
     return json;
-}
-
-export function useJsonStringFormatter(jsonString: string) {
-    return jsonFormatter(jsonString);
 }

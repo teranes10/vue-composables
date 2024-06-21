@@ -1,3 +1,15 @@
+import { upperFirst, camelCase } from 'lodash-es'
+
+export {
+  camelCase as useCamelCase,
+  snakeCase as useSnakeCase,
+  kebabCase as useKebabCase,
+} from "lodash-es";
+
+export function usePascalCase(string: string) {
+  return upperFirst(camelCase(string))
+}
+
 export function useStringTemplateWithReplacements(
   template: string,
   replacements: Record<string, string>

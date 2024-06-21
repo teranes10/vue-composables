@@ -1,6 +1,6 @@
 {
   "name": "@teranes/vue-composables",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -18,6 +18,8 @@
     }
   },
   "scripts": {
+    "release": "npm run build && npm publish --access public || npm run push",
+    "push": "git add . && git commit -m \"Automated build commit\" && git push",
     "build": "tsup"
   },
   "files": [

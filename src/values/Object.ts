@@ -1,5 +1,12 @@
-import { cloneDeep } from "lodash-es";
 import { Last } from "../types/common-types";
+
+export {
+  cloneDeep as useCloneDeep,
+  mapKeys as useMapKeys,
+  mapValues as useMapValues,
+  isPlainObject as useIsPlainObject,
+  isArray as useIsArray
+} from "lodash-es";
 
 export function useObjectValueByPath(
   item: any,
@@ -27,10 +34,6 @@ export function useObjectValueByPath(
 
 export function useIsNull(val: any) {
   return val === null || val === undefined;
-}
-
-export function useCloneDeep<T>(value: T) {
-  return cloneDeep(value);
 }
 
 export function useCoalesce<T extends any[]>(...values: T): Last<T> {

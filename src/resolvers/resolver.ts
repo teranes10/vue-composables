@@ -2,10 +2,10 @@ export const ComposablesAutoImport = {
   "@teranes/vue-composables": [
     "useGetAccessedProps", "useFunctionCaller", "useGetParameters",
     "useGetFromStorage", "useSetToStorage",
-    "useStringTemplateWithReplacements",
+    "useCamelCase", "useSnakeCase", "useKebabCase", "usePascalCase", "useStringTemplateWithReplacements",
     "useNumberDiff", "useToNumericString", "useToFormattedNumericString", "useToCurrencyString", "useToNumber",
     "usePaginate", "usePaginationHandler", "useFilter", "useFilterAndPaginate",
-    "useIsNull", "useIsNullOrEmptyObject", "useMapper", "useCloneDeep", "useCoalesce", "useCoalesceTruthy", "useObjectValueByPath",
+    "useCloneDeep", "useMapKeys", "useMapValues", "useIsPlainObject", "useIsArray", "useObjectValueByPath", "useIsNull", "useCoalesce", "useCoalesceTruthy", "useMapper", "useIsNullOrEmptyObject",
     "useObjectAssign", "useValueAssign",
     "useObjectCompare", "useArrayCompare", "useValueCompare",
     "useShortUniqueId",
