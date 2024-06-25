@@ -1,6 +1,6 @@
 import { toNumberWithCommas } from './toNumberWithCommas'
 
-export function useToCurrencyString(value: string, addCents: boolean = false) {
+export function toCurrencyString(value: string, addCents: boolean = false) {
   let _value = value
   if (!_value) {
     return addCents ? '0.00' : '0'

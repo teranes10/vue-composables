@@ -59,7 +59,7 @@ export const Composables = [
   'isString',
   'replaceStringTemplates',
   'toCamelCase',
-  'useToCurrencyString',
+  'toCurrencyString',
   'toKebabCase',
   'toNumber',
   'toNumberWithCommas',

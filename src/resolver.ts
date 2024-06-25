@@ -5,7 +5,7 @@ interface Options {
   prefix?: string
 }
 
-export default function VueComposableImports({ prefix = 'use' }: Options = {}) {
+export default function VueComposableImports({ prefix = 'use' }: Options = {}): any {
   return [
     {
       from: '@teranes/vue-composables',

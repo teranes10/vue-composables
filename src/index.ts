@@ -254,7 +254,7 @@ export {
 } from './string/toCamelCase'
 
 export {
-  useToCurrencyString,
+  toCurrencyString,
 } from './string/toCurrencyString'
 
 export {
