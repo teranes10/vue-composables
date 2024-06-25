@@ -1,17 +1,18 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "node",
+    "paths": {
+      "dayjs": ["types/dayjs.d.ts"]
+    },
+    "typeRoots": ["./node_modules/@types", "./types"],
     "strict": true,
     "declaration": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
     "outDir": "./dist",
-    "typeRoots": ["./node_modules/@types", "./src/types"],
-    "paths": {
-      "dayjs": ["./dayjs.d.ts"]
-    }
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "exclude": ["dist", "node_modules"]
 }
