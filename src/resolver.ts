@@ -8,7 +8,8 @@ interface Options {
 export default function VueComposableImports({ prefix = 'use' }: Options = {}) {
   return [
     {
-      '@teranes/vue-composables': Composables.map(name => [name, toCamelCase(`${prefix} ${name}`)]),
+      from: '@teranes/vue-composables',
+      imports: Composables.map(name => [name, toCamelCase(`${prefix} ${name}`)]),
     },
     {
       from: '@teranes/vue-composables',
@@ -17,3 +18,5 @@ export default function VueComposableImports({ prefix = 'use' }: Options = {}) {
     },
   ]
 }
+
+export { ComposableTypes, Composables }
