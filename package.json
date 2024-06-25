@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "release": "npm run build && npm run patch && npm publish --access public",
-    "patch": "git add . && git commit -m \"Automated build commit\" && npm version patch",
+    "patch": "git add . && git commit -m \"Automated build commit\" && npm version patch && git push",
     "build": "npm run test && node process.js && npm run lint:fix && tsup",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
