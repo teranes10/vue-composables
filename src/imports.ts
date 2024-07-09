@@ -44,6 +44,7 @@ export const Composables = [
   'throttle',
   'getFromStorage',
   'setToStorage',
+  'isNumber',
   'cloneDeep',
   'getValueByObjectPath',
   'isObject',
@@ -90,4 +91,9 @@ export const ComposableTypes = [
   'PaginationOptions',
   'Popper',
   'PopperInput',
+  'ComponentEmit',
+  'ComponentExposed',
+  'ComponentProps',
+  'ComponentSlots',
+  'ComponentType',
 ]

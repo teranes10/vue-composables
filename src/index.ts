@@ -190,6 +190,10 @@ export {
 } from './local-storage/setToStorage'
 
 export {
+  isNumber,
+} from './number/isNumber'
+
+export {
   cloneDeep,
 } from './object/cloneDeep'
 
@@ -297,6 +301,26 @@ export {
 export {
   getUniqueId,
 } from './unique/getUniqueId'
+
+export {
+  type ComponentEmit,
+} from './vue/componentEmit'
+
+export {
+  type ComponentExposed,
+} from './vue/componentExposed'
+
+export {
+  type ComponentProps,
+} from './vue/componentProps'
+
+export {
+  type ComponentSlots,
+} from './vue/componentSlots'
+
+export {
+  type ComponentType,
+} from './vue/componentType'
 
 export {
   vModel,
