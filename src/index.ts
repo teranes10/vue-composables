@@ -194,6 +194,10 @@ export {
 } from './number/isNumber'
 
 export {
+  round,
+} from './number/round'
+
+export {
   cloneDeep,
 } from './object/cloneDeep'
 

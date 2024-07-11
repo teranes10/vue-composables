@@ -45,6 +45,7 @@ export const Composables = [
   'getFromStorage',
   'setToStorage',
   'isNumber',
+  'round',
   'cloneDeep',
   'getValueByObjectPath',
   'isObject',
