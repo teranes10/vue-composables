@@ -1,4 +1,4 @@
-import { toNumber } from 'src/string/toNumber'
+import { toNumber } from '../string/toNumber'
 import type { PDF, PdfCoordinate } from './pdf'
 
 export interface PdfAddHtmlOptions extends Partial<PdfCoordinate> {

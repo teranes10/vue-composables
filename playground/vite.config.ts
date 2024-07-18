@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import AutoImport from 'unplugin-auto-import/vite'
-import VueComposableImports, { type VueComposableConfigs } from '@teranes/vue-composables/resolver'
+import type { VueComposableConfigs } from '@teranes/vue-composables/resolver'
 
 const global: VueComposableConfigs = {
   vueComposables: {
@@ -20,9 +19,11 @@ export default defineConfig({
   define: {
     global,
   },
-  plugins: [vue(), AutoImport({
-    dts: 'composables-imports.d.ts',
-    dirs: ['src/components/**', 'src/composables/**'],
-    imports: ['vue', 'vue-router', 'pinia', ...VueComposableImports()],
-  })],
+  plugins: [vue()],
 })
+
+// AutoImport({
+//   dts: 'composables-imports.d.ts',
+//   dirs: ['src/components/**', 'src/composables/**'],
+//   imports: ['vue', 'vue-router', 'pinia', ...VueComposableImports()],
+// })

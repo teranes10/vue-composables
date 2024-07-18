@@ -5,7 +5,8 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "paths": {
-      "dayjs": ["types/dayjs.d.ts"]
+      "dayjs": ["types/dayjs.d.ts"],
+      "jspdf": ["types/jspdf.d.ts"]
     },
     "resolveJsonModule": true,
     "typeRoots": ["./node_modules/@types", "./types"],

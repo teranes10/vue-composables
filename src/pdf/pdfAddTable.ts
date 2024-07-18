@@ -1,6 +1,6 @@
 import autoTable, { type CellHookData, type Styles } from 'jspdf-autotable'
 import type { Component } from 'vue'
-import { executeInBatches } from 'src/function/executeInBatches'
+import { executeInBatches } from '../function/executeInBatches'
 import { isFunction } from '../function/isFunction'
 import { getValueByObjectPath } from '../object/getValueByObjectPath'
 import { componentToImage } from '../component/componentToImage'

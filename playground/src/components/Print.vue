@@ -1,7 +1,7 @@
 <!-- eslint-disable no-console -->
 <script setup lang="ts">
-import { getValueByObjectPath, isFunction } from '@teranes/vue-composables'
-import { h } from 'vue'
+import { PDF, type PdfTableHeader, getValueByObjectPath, isFunction, pdfAddTable, pdfAddText, pdfAddWatermark } from '@teranes/vue-composables'
+import { h, ref } from 'vue'
 
 interface Product {
   id: number
@@ -64,15 +64,15 @@ function getValue(item: any, value: any) {
 async function print() {
   const pdf = new PDF()
 
-  usePdfAddText(pdf, 'Title')
+  pdfAddText(pdf, 'Title')
 
-  await usePdfAddTable(pdf, headers, items.value, {
+  await pdfAddTable(pdf, headers, items.value, {
     progress: (percentage: number) => {
       console.log(percentage)
     },
   })
 
-  usePdfAddWatermark(pdf, 'Vue Composables')
+  pdfAddWatermark(pdf, 'Vue Composables')
 
   pdf.print()
 }

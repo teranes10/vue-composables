@@ -5,9 +5,11 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   target: 'esnext',
   platform: 'browser',
-  dts: true,
+  dts: {
+    resolve: true,
+  },
   external: ['vue'],
-  minify: false,
+  minify: true,
   splitting: true,
   clean: true,
 })

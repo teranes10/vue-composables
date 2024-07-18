@@ -1,4 +1,4 @@
-import JsPDF, { type jsPDFOptions } from 'jspdf'
+import jsPDF, { type jsPDFOptions } from 'jspdf'
 import type { Hex, RGB } from '../color/_base'
 import { hexToRgb } from '../color/hexToRgb'
 
@@ -21,7 +21,7 @@ interface PdfCoordinates extends PdfCoordinate {
   _y: number
 }
 
-export class PDF extends JsPDF {
+export class PDF extends jsPDF {
   private fontSize: number
   private color: [number, number, number]
   private margin: number

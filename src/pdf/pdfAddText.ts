@@ -1,4 +1,4 @@
-import type { Hex } from 'src/color/_base'
+import type { Hex } from '../color/_base'
 import type { PDF, PdfCoordinate } from './pdf'
 
 export interface PdfTextOptions extends Partial<PdfCoordinate> {

@@ -1,9 +1,11 @@
 <!-- eslint-disable no-console -->
 <script setup lang="ts">
+import { type ComponentType, PDF, date, pdfAddComponent, pdfAddText, pdfAddWatermark, toCurrencyString } from '@teranes/vue-composables'
+import { ref } from 'vue'
 import Print from './components/Print.vue'
 
-console.log(useToCurrencyString(1000))
-console.log(useDate())
+console.log(toCurrencyString(1000))
+console.log(date())
 
 const printComponent = ref<ComponentType<typeof Print>>()
 
@@ -11,18 +13,18 @@ async function print() {
   if (printComponent.value) {
     const pdf = new PDF()
 
-    usePdfAddText(pdf, 'Title', { fontSize: 18 })
+    pdfAddText(pdf, 'Title', { fontSize: 18 })
 
-    await usePdfAddComponent(pdf, Print, {
+    await pdfAddComponent(pdf, Print, {
       y: 10,
       debounceDelay: 1000,
     })
 
-    usePdfAddText(pdf, 'Title', { y: 10, fontSize: 18 })
+    pdfAddText(pdf, 'Title', { y: 10, fontSize: 18 })
 
-    usePdfAddText(pdf, 'Title', { y: 10, fontSize: 18 })
+    pdfAddText(pdf, 'Title', { y: 10, fontSize: 18 })
 
-    usePdfAddWatermark(pdf, 'Vue Composables')
+    pdfAddWatermark(pdf, 'Vue Composables')
 
     pdf.print()
   }
@@ -45,12 +47,4 @@ button {
   color: white;
   border-radius: 0.25rem;
 }
-</style>import { title } from 'process';
-import { PDF, pdfAddText, pdfAddTable, pdfAddWatermark } from '../../dist';
-import { title } from 'process';
-import { PDF, pdfAddText, pdfAddTable, pdfAddWatermark } from '../../dist';import { title } from 'process';
-import { PDF, pdfAddText, pdfAddTable, pdfAddWatermark } from '../../dist';import { title } from 'process';
-import { pdfAddText, pdfAddTable, pdfAddWatermark } from '../../dist';import { title } from 'process';
-import { pdfAddText, pdfAddTable, pdfAddWatermark } from '../../dist';import { title } from 'process';
-import { pdfAddText, pdfAddTable, pdfAddWatermark } from '../../dist';import { title } from 'process';
-import { pdfAddText, pdfAddTable, pdfAddWatermark } from '../../dist';
+</style>
