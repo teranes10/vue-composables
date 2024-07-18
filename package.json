@@ -1,7 +1,7 @@
 {
   "name": "@teranes/vue-composables",
   "type": "module",
-  "version": "5.0.6",
+  "version": "5.0.7",
   "description": "Collection of Vue Composables",
   "author": "Teranes",
   "license": "MIT",
