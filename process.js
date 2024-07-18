@@ -94,7 +94,9 @@ for (const filePath of traverseFiles(rootDir)) {
 }
 
 const functions = []
+const classes = []
 const types = []
+
 let indexFileContent = ''
 
 for (const file of exports) {
@@ -108,6 +110,9 @@ for (const file of exports) {
     if (expo.type === 'type' || expo.type === 'interface') {
       types.push(expo.name)
     }
+    else if (expo.type === 'class') {
+      classes.push(expo.name)
+    }
     else {
       functions.push(expo.name)
     }
@@ -120,6 +125,7 @@ for (const file of exports) {
 
 fs.writeFileSync(indexFile, indexFileContent, 'utf-8')
 
+// composables
 let importsFileContent = `export const Composables = [\n`
 
 for (const func of functions) {
@@ -127,9 +133,19 @@ for (const func of functions) {
 }
 
 importsFileContent += `];`
-
 importsFileContent += `\n\n`
 
+// classes
+importsFileContent += `export const ComposableClasses = [\n`
+
+for (const className of classes) {
+  importsFileContent += `\t"${className}",\n`
+}
+
+importsFileContent += `];`
+importsFileContent += `\n\n`
+
+// types
 importsFileContent += `export const ComposableTypes = [\n`
 
 for (const type of types) {

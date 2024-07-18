@@ -1,3 +1,4 @@
+import { getGlobalConfigs } from '../resolver'
 import { type AnyDateFormat, type Dayjs, dayjs } from './_base'
 import { isValidDate } from './isValidDate'
 
@@ -13,13 +14,15 @@ export interface DateOptions {
 
 export function date(options?: DateOptions & { returnObject?: false }): string
 export function date(options?: DateOptions & { returnObject?: true }): DateObject
-export function date({
-  date,
-  parseFormat,
-  format = 'YYYY-MM-DDTHH:mm:ss',
-  utc = false,
-  returnObject = false,
-}: DateOptions = {}): string | DateObject | undefined {
+export function date(options: DateOptions = {}): string | DateObject | undefined {
+  const {
+    date,
+    parseFormat,
+    format = 'YYYY-MM-DDTHH:mm:ss',
+    utc = false,
+    returnObject = false,
+  } = { ...getGlobalConfigs('date'), ...options }
+
   if (date) {
     if (!isValidDate(date, parseFormat)) {
       return returnObject ? undefined : ''

@@ -1,7 +1,15 @@
+import { getGlobalConfigs } from '../resolver'
 import { toNumberWithCommas } from './toNumberWithCommas'
 
-export function toCurrencyString(value: string, addCents: boolean = false) {
-  let _value = value
+export interface CurrencyStringOptions {
+  addCents?: boolean
+  symbol?: string
+}
+
+export function toCurrencyString(value: string | number, options: CurrencyStringOptions = {}) {
+  const { addCents = true, symbol = '$' } = { ...getGlobalConfigs('currencyString'), ...options }
+
+  let _value = value?.toString()
   if (!_value) {
     return addCents ? '0.00' : '0'
   }
@@ -31,5 +39,5 @@ export function toCurrencyString(value: string, addCents: boolean = false) {
     }
   }
 
-  return _value
+  return `${symbol}${_value}`
 }

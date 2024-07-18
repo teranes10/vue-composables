@@ -45,6 +45,10 @@ export {
 } from './color/hexToHsl'
 
 export {
+  hexToRgb,
+} from './color/hexToRgb'
+
+export {
   hslToFilter,
 } from './color/hslToFilter'
 
@@ -69,8 +73,13 @@ export {
 } from './compare/compareType'
 
 export {
-  componentToImage,
+  type ComponentToHtmlOptions,
+  componentToHtml,
+} from './component/componentToHtml'
+
+export {
   type ComponentToImageOptions,
+  componentToImage,
 } from './component/componentToImage'
 
 export {
@@ -112,6 +121,10 @@ export {
 } from './function/call'
 
 export {
+  executeInBatches,
+} from './function/executeInBatches'
+
+export {
   getAccessedProps,
 } from './function/getAccessedProps'
 
@@ -126,6 +139,20 @@ export {
 export {
   isFunction,
 } from './function/isFunction'
+
+export {
+  type HtmlToImageOptions,
+  htmlToImage,
+} from './html/htmlToImage'
+
+export {
+  getImageProperties,
+  type ImageProperties,
+} from './image/getImageProperties'
+
+export {
+  imageToDataUrl,
+} from './image/imageToDataUrl'
 
 export {
   isNullOrEmptyArray,
@@ -151,23 +178,6 @@ export {
   type JsonToCsvExportOptions,
   jsonToCsvExport,
 } from './json/jsonToCsvExport'
-
-export {
-  jsonToPdf,
-  type PdfObject,
-  type JsonToPdfTableHeader,
-  type JsonToPdfOptions,
-} from './json/jsonToPdf'
-
-export {
-  type JsonToPdfExportOptions,
-  jsonToPdfExport,
-} from './json/jsonToPdfExport'
-
-export {
-  type JsonToPdfPrintOptions,
-  jsonToPdfPrint,
-} from './json/jsonToPdfPrint'
 
 export {
   toCamelCaseJson,
@@ -232,6 +242,44 @@ export {
 } from './pagination/pagination'
 
 export {
+  type PdfOptions,
+  type PdfCoordinate,
+  PDF,
+} from './pdf/pdf'
+
+export {
+  type PdfAddComponentOptions,
+  pdfAddComponent,
+} from './pdf/pdfAddComponent'
+
+export {
+  type PdfAddHtmlOptions,
+  pdfAddHtml,
+} from './pdf/pdfAddHtml'
+
+export {
+  type PdfAddImageOptions,
+  pdfAddImage,
+} from './pdf/pdfAddImage'
+
+export {
+  type PdfTableHeader,
+  type PdfDrawItemOptions,
+  type PdfAddTableOptions,
+  pdfAddTable,
+} from './pdf/pdfAddTable'
+
+export {
+  type PdfTextOptions,
+  pdfAddText,
+} from './pdf/pdfAddText'
+
+export {
+  type PdfWatermarkOptions,
+  pdfAddWatermark,
+} from './pdf/pdfAddWatermark'
+
+export {
   popper,
   type Popper,
   type PopperInput,
@@ -262,6 +310,7 @@ export {
 } from './string/toCamelCase'
 
 export {
+  type CurrencyStringOptions,
   toCurrencyString,
 } from './string/toCurrencyString'
 
@@ -298,13 +347,25 @@ export {
 } from './string/toSnakeCase'
 
 export {
+  extractStyles,
+} from './style/extractStyles'
+
+export {
   getTag,
   isTag,
 } from './tag/tag'
 
 export {
+  sleep,
+} from './timer/sleep'
+
+export {
   getUniqueId,
 } from './unique/getUniqueId'
+
+export {
+  type FunctionParams,
+} from './utils/FunctionParams'
 
 export {
   type ComponentEmit,
@@ -329,3 +390,8 @@ export {
 export {
   vModel,
 } from './vue/vModel'
+
+export {
+  type WatchOnceOptions,
+  watchOnce,
+} from './vue/watchOnce'

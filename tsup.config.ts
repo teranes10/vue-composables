@@ -7,7 +7,7 @@ export default defineConfig({
   platform: 'browser',
   dts: true,
   external: ['vue'],
-  minify: true,
+  minify: false,
   splitting: true,
   clean: true,
 })
