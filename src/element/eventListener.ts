@@ -5,6 +5,8 @@
 import type { MaybeRef } from 'vue'
 import { isRef, onMounted, onUnmounted } from 'vue'
 
+type Arrayable<T> = T | T[]
+
 export function eventListener<K extends keyof HTMLElementEventMap>(
   nodes: Arrayable<MaybeRef<HTMLElement | undefined>>,
   event: K,

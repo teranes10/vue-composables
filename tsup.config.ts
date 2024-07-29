@@ -11,6 +11,5 @@ export default defineConfig({
   external: ['vue'],
   minify: true,
   splitting: true,
-  sourcemap: true,
   clean: true,
 })
