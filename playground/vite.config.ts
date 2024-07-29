@@ -21,9 +21,3 @@ export default defineConfig({
   },
   plugins: [vue()],
 })
-
-// AutoImport({
-//   dts: 'composables-imports.d.ts',
-//   dirs: ['src/components/**', 'src/composables/**'],
-//   imports: ['vue', 'vue-router', 'pinia', ...VueComposableImports()],
-// })

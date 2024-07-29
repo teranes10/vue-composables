@@ -1,32 +1,47 @@
-import { onUnmounted } from 'vue'
-import { isEventInsideElement } from './isEventInsideElement'
+// ** Event listeners calling order **
+// Capturing phase: the event starts from the topmost element in the DOM tree and propagates down to the target element
+// Bubbling phase: the event starts from the target element and propagates up through its ancestors to the topmost element in the DOM tree
 
-export function eventListener(
-  element: HTMLElement,
-  event: 'click',
-  callback: (e: MouseEvent, el: HTMLElement) => void,
-  childNodes: HTMLElement[] = [], // parent -> child order
-  removeOtherEvents: boolean = false,
+import type { MaybeRef } from 'vue'
+import { isRef, onMounted, onUnmounted } from 'vue'
+
+export function eventListener<K extends keyof HTMLElementEventMap>(
+  nodes: Arrayable<MaybeRef<HTMLElement | undefined>>,
+  event: K,
+  callback: (options: HTMLElementEventMap[K], node: HTMLElement) => void,
+  options: Partial<AddEventListenerOptions> = {},
 ) {
-  const listener = (e: MouseEvent) => {
-    if (removeOtherEvents) {
-      e.stopImmediatePropagation()
-    }
+  const clearEvents: (() => void)[] = []
 
-    let clickedElement = element
-    for (const node of childNodes.reverse()) {
-      if (isEventInsideElement(node, e)) {
-        clickedElement = node
-        break
+  const addEventListener = (node: MaybeRef<HTMLElement | undefined>) => {
+    const currentNode = isRef(node) ? node.value : node
+    if (currentNode) {
+      const listener = (options: HTMLElementEventMap[K]) => {
+        callback(options, currentNode)
       }
-    }
 
-    callback(e, clickedElement)
+      currentNode.addEventListener(event, listener, options)
+
+      clearEvents.push(() => {
+        currentNode.removeEventListener(event, listener, options)
+      })
+    }
   }
 
-  element.addEventListener(event, listener, true)
+  onMounted(() => {
+    if (Array.isArray(nodes)) {
+      for (const node of nodes) {
+        addEventListener(node)
+      }
+    }
+    else {
+      addEventListener(nodes)
+    }
+  })
 
   onUnmounted(() => {
-    element.removeEventListener(event, listener, true)
+    for (const clear of clearEvents) {
+      clear()
+    }
   })
 }
