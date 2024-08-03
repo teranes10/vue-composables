@@ -93,6 +93,7 @@ export const ComposableClasses = [
 ]
 
 export const ComposableTypes = [
+  'Arrayable',
   'FilterAndPaginateOptions',
   'BlobDownloadOptions',
   'ComponentToHtmlOptions',

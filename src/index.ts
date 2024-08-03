@@ -1,4 +1,8 @@
 export {
+  type Arrayable,
+} from './array/arrayable'
+
+export {
   filter,
 } from './array/filter'
 

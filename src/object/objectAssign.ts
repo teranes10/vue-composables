@@ -1,12 +1,17 @@
 import { isObject } from './isObject'
 
-export function objectAssign(target: any, src: any, forced = false) {
+interface ObjectAssignOptions {
+  force?: boolean // Map all properties in src, except only map properties in target if they exist.
+  ignoreNull?: boolean // Ignore src null values
+}
+
+export function objectAssign(target: any, src: any, { force, ignoreNull }: ObjectAssignOptions = {}) {
   if (src == null) {
     return target
   }
 
   if (target == null) {
-    if (!forced) {
+    if (!force) {
       return undefined
     }
 
@@ -15,26 +20,24 @@ export function objectAssign(target: any, src: any, forced = false) {
 
   for (const prop in src) {
     if (!Object.prototype.hasOwnProperty.call(target, prop)) {
-      if (forced) {
-        target[prop] = src[prop]
+      if (!force) {
+        continue
       }
-
-      continue
     }
 
-    target[prop] = getValue(target[prop], src[prop], forced)
+    target[prop] = getValue(target[prop], src[prop], { force, ignoreNull })
   }
 
   return target
 }
 
-function getValue(target: any, src: any, forced = false) {
-  if (!src == null) {
-    return undefined
+function getValue(target: any, src: any, { force, ignoreNull }: ObjectAssignOptions = {}) {
+  if (src == null) {
+    return ignoreNull ? target : undefined
   }
 
   if (isObject(src)) {
-    return objectAssign(target, src, forced)
+    return objectAssign(target, src, { force, ignoreNull })
   }
 
   return src
