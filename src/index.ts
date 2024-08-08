@@ -232,6 +232,10 @@ export {
 } from './object/mapValue'
 
 export {
+  type Merge,
+} from './object/merge'
+
+export {
   objectAssign,
 } from './object/objectAssign'
 

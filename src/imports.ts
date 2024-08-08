@@ -103,6 +103,7 @@ export const ComposableTypes = [
   'HtmlToImageOptions',
   'ImageProperties',
   'JsonToCsvExportOptions',
+  'Merge',
   'PaginationLoadOptions',
   'PaginationOptions',
   'PdfOptions',
