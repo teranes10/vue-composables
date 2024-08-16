@@ -5,11 +5,13 @@
       "dom"
     ],
     "baseUrl": ".",
+    "rootDir": ".",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "paths": {
       "dayjs": ["types/dayjs.d.ts"],
-      "jspdf": ["types/jspdf.d.ts"]
+      "jspdf": ["types/jspdf.d.ts"],
+      "qrcode": ["types/qrcode.d.ts"]
     },
     "resolveJsonModule": true,
     "typeRoots": ["./node_modules/@types", "./types"],

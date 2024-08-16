@@ -1,6 +1,6 @@
 import { type Ref, computed, ref, watch } from 'vue'
-import { filterAndPaginate } from '../array/filterAndPaginate'
 import { compare } from '../compare/compare'
+import { filterAndPaginate } from './filterAndPaginate'
 
 export interface PaginationLoadOptions<T> {
   page: number
@@ -12,9 +12,9 @@ export interface PaginationLoadOptions<T> {
 }
 
 export interface PaginationOptions {
-  search?: Ref<string>
+  search?: Ref<string | undefined>
   optionsDelay?: number
-  serverSideRendering?: Ref<boolean>
+  serverSideRendering?: Ref<boolean | undefined>
   searchDelay?: number
   storePreviousItems?: boolean
   params?: Ref<{ [key: string]: any }>

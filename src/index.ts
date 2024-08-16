@@ -20,6 +20,12 @@ export {
 } from './array/paginate'
 
 export {
+  type PaginationLoadOptions,
+  type PaginationOptions,
+  pagination,
+} from './array/pagination'
+
+export {
   type BlobDownloadOptions,
   blobDownload,
 } from './blob/blobDownload'
@@ -160,15 +166,15 @@ export {
 
 export {
   isNullOrEmptyArray,
-} from './isNullOrEmpty/isNullOrEmptyArray'
+} from './is-null-or-empty/isNullOrEmptyArray'
 
 export {
   isNullOrEmptyObject,
-} from './isNullOrEmpty/isNullOrEmptyObject'
+} from './is-null-or-empty/isNullOrEmptyObject'
 
 export {
   isNullOrEmptyString,
-} from './isNullOrEmpty/isNullOrEmptyString'
+} from './is-null-or-empty/isNullOrEmptyString'
 
 export {
   jsonStringFormatter,
@@ -212,6 +218,10 @@ export {
 } from './number/round'
 
 export {
+  assignDefaults,
+} from './object/assignDefaults'
+
+export {
   cloneDeep,
 } from './object/cloneDeep'
 
@@ -242,12 +252,6 @@ export {
 export {
   setValueByObjectPath,
 } from './object/setValueByObjectPath'
-
-export {
-  type PaginationLoadOptions,
-  type PaginationOptions,
-  pagination,
-} from './pagination/pagination'
 
 export {
   type PdfOptions,
@@ -292,6 +296,13 @@ export {
   type Popper,
   type PopperInput,
 } from './popper/popper'
+
+export {
+  type QrCodeType,
+  type QrCodeErrorCorrectionLevel,
+  type QrCodeOptions,
+  generateQrCode,
+} from './qr/generateQr'
 
 export {
   isRegex,
@@ -378,6 +389,10 @@ export {
 export {
   type ComponentEmit,
 } from './vue/componentEmit'
+
+export {
+  type ComponentEvents,
+} from './vue/componentEvents'
 
 export {
   type ComponentExposed,

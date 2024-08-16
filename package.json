@@ -55,6 +55,7 @@
     "nanoid": "^5.0.7",
     "papaparse": "^5.4.1",
     "pluralize": "^8.0.0",
+    "qrcode": "^1.5.4",
     "terser": "^5.31.3",
     "tsup": "^8.1.0",
     "typescript": "^5.5.2",

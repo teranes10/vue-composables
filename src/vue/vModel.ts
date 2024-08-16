@@ -6,7 +6,7 @@ export function vModel<P extends object, K extends keyof P, Name extends string>
   key: K,
   emit?: (name: Name, ...args: any[]) => void,
   defaultValue?: P[K],
-): Ref<NonNullable<P[K]>> {
+) {
   const isDef = <T = any>(val?: T): val is T => typeof val !== 'undefined'
   const getInitialValue = () => {
     if (isDef(props[key]) && typeof props[key] === 'boolean') {
@@ -24,7 +24,7 @@ export function vModel<P extends object, K extends keyof P, Name extends string>
   }
 
   const initialValue = getInitialValue()
-  const proxy = ref<P[K]>(initialValue!) as Ref<NonNullable<P[K]>>
+  const proxy = ref<P[K]>(initialValue!)
   const deep = typeof proxy.value === 'object'
 
   let isUpdating = false
@@ -50,5 +50,5 @@ export function vModel<P extends object, K extends keyof P, Name extends string>
     { deep },
   )
 
-  return proxy
+  return proxy as Ref<P[K]>
 }
