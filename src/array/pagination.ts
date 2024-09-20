@@ -17,7 +17,7 @@ export interface PaginationOptions {
   serverSideRendering?: Ref<boolean | undefined>
   searchDelay?: number
   storePreviousItems?: boolean
-  params?: Ref<{ [key: string]: any }>
+  params?: Ref<{ [key: string]: any } | undefined>
 }
 
 export function pagination<T>(

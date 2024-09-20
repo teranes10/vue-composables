@@ -88,6 +88,7 @@ export const Composables = [
   'getUniqueId',
   'vModel',
   'watchOnce',
+  'getScreenWidth',
 ]
 
 export const ComposableClasses = [

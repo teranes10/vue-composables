@@ -418,3 +418,7 @@ export {
   type WatchOnceOptions,
   watchOnce,
 } from './vue/watchOnce'
+
+export {
+  getScreenWidth,
+} from './window/getScreenWidth'
