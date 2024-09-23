@@ -1,0 +1,21 @@
+{
+  "name": "@teranes/utils",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node exporter.js && tsup"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./exports": {
+      "require": "./dist/exports.cjs",
+      "import": "./dist/exports.js"
+    }
+  }
+}

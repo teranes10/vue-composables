@@ -1,0 +1,21 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "rootDir": ".",
+        "paths": {
+            "json-string-formatter": [
+                "json-string-formatter.d.ts"
+            ]
+        },
+        "outDir": "dist"
+    },
+    "include": [
+        "src/**/*",
+        "json-string-formatter.d.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@teranes/pdf",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node exporter.js && tsup"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./exports": {
+      "require": "./dist/exports.cjs",
+      "import": "./dist/exports.js"
+    }
+  },
+  "devDependencies": {
+    "@teranes/html-to-image": "file:../html-to-image",
+    "@teranes/utils": "file:../utils",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.2"
+  },
+  "dependencies": {
+    "vue": "^3.5.8"
+  }
+}

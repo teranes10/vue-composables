@@ -1,15 +1,16 @@
-import { defineConfig } from 'tsup'
-
-export default defineConfig({
-  entry: ['src/index.ts', 'src/resolver.ts'],
+export const baseConfig = {
   format: ['esm', 'cjs'],
   target: 'esnext',
   platform: 'browser',
   dts: {
     resolve: true,
   },
-  external: ['vue'],
   minify: true,
-  splitting: true,
+  splitting: false,
   clean: true,
-})
+  outExtension({ format }) {
+    return {
+      js: format === 'cjs' ? '.cjs' : '.js',
+    }
+  },
+} as any

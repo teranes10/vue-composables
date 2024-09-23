@@ -41,8 +41,13 @@
 
   "cSpell.words": [
     "Arrayable",
+    "autotable",
     "dataurlnewwindow",
+    "papaparse",
+    "popperjs",
+    "qrcode",
     "spsa",
+    "tsup",
     "unparse"
   ]
 }

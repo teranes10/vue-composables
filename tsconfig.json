@@ -1,25 +1,27 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": [
-      "dom"
-    ],
-    "baseUrl": ".",
-    "rootDir": ".",
     "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "paths": {
-      "dayjs": ["types/dayjs.d.ts"],
-      "jspdf": ["types/jspdf.d.ts"],
-      "qrcode": ["types/qrcode.d.ts"]
-    },
-    "resolveJsonModule": true,
-    "typeRoots": ["./node_modules/@types", "./types"],
+    "lib": ["dom"],
     "strict": true,
-    "declaration": true,
-    "outDir": "./dist",
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
   },
-  "exclude": ["dist", "node_modules", "playground"]
+  "include": [
+    "packages/**/*.{ts,tsx,js,jsx}"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "references": [
+    { "path": "./packages/csv" },
+    { "path": "./packages/date" }
+  ]
 }

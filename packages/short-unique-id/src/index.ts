@@ -1,0 +1,4 @@
+export {
+	getShortUniqueId,
+} from './getShortUniqueId';
+
