@@ -1,16 +1,16 @@
 {
   "name": "@teranes/utils",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "type": "module",
-    "author": "Teranes",
-    "license": "MIT",
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/teranes10/vue-composables.git"
-    },
-    "files": [
-      "dist"
-    ],
+  "author": "Teranes",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teranes10/vue-composables.git"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "node exporter.js && tsup"
   },
