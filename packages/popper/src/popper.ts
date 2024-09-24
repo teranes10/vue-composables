@@ -11,6 +11,7 @@ export function popper({
   action,
   offset,
   duplicates = false,
+  onStateChanged
 }: PopperInput): Popper {
   let popperInstance: PopperInstance | null
   let popperElement: HTMLElement
@@ -130,6 +131,7 @@ export function popper({
       }
 
       showing = true
+      onStateChanged?.('show', true)
 
       if (!persistent) {
         if (referenceEl) {
@@ -160,6 +162,7 @@ export function popper({
       }
 
       showing = false
+      onStateChanged?.('show', false)
     }
 
     if (isScrollDisabled) {
@@ -308,6 +311,7 @@ export interface Popper {
   isShowing: () => boolean
 }
 
+export type StateType = 'show'
 export interface PopperInput {
   popperEl: HTMLElement
   referenceEl: Element
@@ -318,6 +322,7 @@ export interface PopperInput {
   action?: PopperAction
   offset?: PopperOffset
   duplicates?: boolean
+  onStateChanged?: (type: StateType, value: any) => void
 }
 
 type PopperAction = 'hover' | 'click'

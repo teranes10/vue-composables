@@ -7,3 +7,7 @@ export const interfaces = [
 	"PopperInput",
 ];
 
+export const types = [
+	"StateType",
+];
+
