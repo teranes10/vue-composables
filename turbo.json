@@ -5,10 +5,16 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "lint": {
+    "version": {
+      "dependsOn": [
+        "build"
+      ],
       "outputs": []
     },
-    "test": {
+    "publish": {
+      "dependsOn": [
+        "version"
+      ],
       "outputs": []
     }
   }
