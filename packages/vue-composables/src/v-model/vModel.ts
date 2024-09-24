@@ -4,9 +4,22 @@ import { coalesce } from '@teranes/utils'
 export function vModel<P extends object, K extends keyof P, Name extends string>(
   props: P,
   key: K,
+  emit?: (name: Name, ...args: any[]) => void
+): Ref<P[K]>
+
+export function vModel<P extends object, K extends keyof P, Name extends string>(
+  props: P,
+  key: K,
+  emit?: (name: Name, ...args: any[]) => void,
+  defaultValue?: NonNullable<P[K]>,
+): Ref<NonNullable<P[K]>>;
+
+export function vModel<P extends object, K extends keyof P, Name extends string>(
+  props: P,
+  key: K,
   emit?: (name: Name, ...args: any[]) => void,
   defaultValue?: P[K],
-) {
+): Ref<P[K] | NonNullable<P[K]>> {
   const isDef = <T = any>(val?: T): val is T => typeof val !== 'undefined'
   const getInitialValue = () => {
     if (isDef(props[key]) && typeof props[key] === 'boolean') {
@@ -50,5 +63,5 @@ export function vModel<P extends object, K extends keyof P, Name extends string>
     { deep },
   )
 
-  return proxy as Ref<P[K]>
+  return proxy as Ref<P[K] | NonNullable<P[K]>>
 }
