@@ -1,6 +1,6 @@
 {
   "name": "@teranes/popper",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "type": "module",
   "author": "Teranes",
   "license": "MIT",
@@ -27,7 +27,7 @@
       "import": "./dist/exports.js"
     }
   },
-  "devDependencies": {
+  "dependencies": {
     "@popperjs/core": "^2.11.8"
   }
 }

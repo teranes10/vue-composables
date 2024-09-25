@@ -1,6 +1,6 @@
 {
   "name": "@teranes/utils",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "type": "module",
   "author": "Teranes",
   "license": "MIT",
@@ -28,7 +28,9 @@
     }
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.12",
+    "@types/lodash-es": "^4.17.12"
+  },
+  "dependencies": {
     "lodash-es": "^4.17.21"
   }
 }

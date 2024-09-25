@@ -1,6 +1,6 @@
 {
   "name": "@teranes/html-to-image",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "type": "module",
   "scripts": {
     "build": "node exporter.js && tsup"
@@ -27,12 +27,10 @@
       "import": "./dist/exports.js"
     }
   },
-  "devDependencies": {
+  "dependencies": {
     "@teranes/short-unique-id": "file:../short-unique-id",
     "@teranes/vue-composables": "file:../vue-composables",
-    "html-to-image": "^1.11.11"
-  },
-  "dependencies": {
+    "html-to-image": "^1.11.11",
     "vue": "^3.5.8"
   }
 }

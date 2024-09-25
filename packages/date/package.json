@@ -1,6 +1,6 @@
 {
   "name": "@teranes/date",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "type": "module",
   "author": "Teranes",
   "license": "MIT",
@@ -27,7 +27,7 @@
       "import": "./dist/exports.js"
     }
   },
-  "devDependencies": {
-    "dayjs": "^1.11.11"
+  "dependencies": {
+    "dayjs": "^1.11.13"
   }
 }

@@ -1,5 +1,11 @@
 # @teranes/popper
 
+## 4.0.0
+
+### Major Changes
+
+- dependency mangement
+
 ## 3.0.0
 
 ### Major Changes

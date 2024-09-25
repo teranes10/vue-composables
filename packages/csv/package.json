@@ -1,6 +1,6 @@
 {
   "name": "@teranes/csv",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "type": "module",
   "author": "Teranes",
   "license": "MIT",
@@ -28,7 +28,9 @@
     }
   },
   "devDependencies": {
-    "@types/papaparse": "^5.3.14",
+    "@types/papaparse": "^5.3.14"
+  },
+  "dependencies": {
     "papaparse": "^5.4.1"
   }
 }

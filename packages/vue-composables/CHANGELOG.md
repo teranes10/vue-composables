@@ -1,5 +1,11 @@
 # @teranes/vue-composables
 
+## 8.0.0
+
+### Major Changes
+
+- dependency mangement
+
 ## 7.0.0
 
 ### Major Changes

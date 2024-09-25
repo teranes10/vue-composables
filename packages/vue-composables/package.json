@@ -1,6 +1,6 @@
 {
   "name": "@teranes/vue-composables",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "type": "module",
   "author": "Teranes",
   "license": "MIT",
@@ -27,10 +27,8 @@
       "import": "./dist/exports.js"
     }
   },
-  "devDependencies": {
-    "@teranes/utils": "file:../utils"
-  },
   "dependencies": {
+    "@teranes/utils": "file:../utils",
     "vue": "^3.5.8"
   }
 }

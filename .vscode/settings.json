@@ -43,6 +43,7 @@
     "Arrayable",
     "autotable",
     "dataurlnewwindow",
+    "jspdf",
     "papaparse",
     "popperjs",
     "qrcode",
