@@ -1,5 +1,11 @@
 # @teranes/utils
 
+## 7.0.0
+
+### Major Changes
+
+- a666f90: test
+
 ## 6.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @teranes/vue-composables
 
+## 12.0.0
+
+### Major Changes
+
+- a666f90: test
+
 ## 11.0.0
 
 ### Major Changes

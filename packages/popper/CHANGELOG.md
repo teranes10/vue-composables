@@ -1,5 +1,11 @@
 # @teranes/popper
 
+## 8.0.0
+
+### Major Changes
+
+- a666f90: test
+
 ## 7.0.0
 
 ### Major Changes
