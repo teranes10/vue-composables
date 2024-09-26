@@ -1,5 +1,11 @@
 # @teranes/vue-composables
 
+## 11.0.0
+
+### Major Changes
+
+- summary test
+
 ## 10.0.0
 
 ### Major Changes

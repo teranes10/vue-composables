@@ -1,5 +1,11 @@
 # @teranes/short-unique-id
 
+## 6.0.0
+
+### Major Changes
+
+- summary test
+
 ## 5.0.0
 
 ### Major Changes

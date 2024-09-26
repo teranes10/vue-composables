@@ -33,7 +33,7 @@
   ],
   "packageManager": "pnpm@8.6.0",
   "scripts": {
-    "release": "turbo run build && changeset && changeset version && changeset publish && git add . && git commit -m \"Automated build commit\" && git push",
+    "release": "turbo run build && changeset && changeset version && changeset publish && git push --follow-tags",
     "patch": "git add . && git commit -m \"Automated build commit\" && npm version patch && git push",
     "build": "npm run test && node process.js && npm run lint:fix && tsup",
     "lint": "eslint .",

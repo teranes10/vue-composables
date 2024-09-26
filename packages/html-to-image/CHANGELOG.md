@@ -1,5 +1,11 @@
 # @teranes/html-to-image
 
+## 6.0.0
+
+### Major Changes
+
+- summary test
+
 ## 5.0.0
 
 ### Major Changes
