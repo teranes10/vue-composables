@@ -61,10 +61,15 @@ export function libraryConfig(name, {
     input: imports,
     output: [
       {
-        file: `dist/imports.js`,
-        format: 'es',
+        dir: 'dist',
+        entryFileNames: `imports.mjs`,
         exports: 'named',
-        name: name + "Imports",
+        format: 'es',
+      },
+      {
+        dir: 'dist',
+        entryFileNames: `imports.cjs`,
+        format: 'cjs',
       },
     ],
     plugins: [

@@ -1,5 +1,11 @@
 # @teranes/date
 
+## 5.0.0
+
+### Major Changes
+
+- fix
+
 ## 4.0.0
 
 ### Major Changes

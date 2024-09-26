@@ -1,5 +1,11 @@
 # @teranes/popper
 
+## 6.0.0
+
+### Major Changes
+
+- fix
+
 ## 5.0.0
 
 ### Major Changes

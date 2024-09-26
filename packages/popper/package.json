@@ -1,6 +1,6 @@
 {
   "name": "@teranes/popper",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "type": "module",
   "author": "Teranes",
   "license": "MIT",
@@ -15,16 +15,18 @@
     "build": "node exporter.js && rollup -c rollup.config.js"
   },
   "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "umd": "./dist/index.umd.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.js"
     },
     "./exports": {
       "require": "./dist/exports.cjs",
-      "import": "./dist/exports.js"
+      "import": "./dist/exports.mjs"
     }
   },
   "dependencies": {

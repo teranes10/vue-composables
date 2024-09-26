@@ -1,5 +1,11 @@
 # @teranes/vue-composables
 
+## 10.0.0
+
+### Major Changes
+
+- fix
+
 ## 9.0.0
 
 ### Major Changes
