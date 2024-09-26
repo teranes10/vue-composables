@@ -1,6 +1,6 @@
 {
   "name": "@teranes/words",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "type": "module",
   "author": "Teranes",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "node exporter.js && tsup"
+    "build": "node exporter.js && rollup -c rollup.config.js"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

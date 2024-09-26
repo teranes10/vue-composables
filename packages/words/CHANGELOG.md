@@ -1,5 +1,11 @@
 # @teranes/words
 
+## 4.0.0
+
+### Major Changes
+
+- umd support
+
 ## 3.0.0
 
 ### Major Changes

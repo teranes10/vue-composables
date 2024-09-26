@@ -10,9 +10,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
   },
   "include": [
     "packages/**/*.{ts,tsx,js,jsx}"

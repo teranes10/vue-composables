@@ -1,5 +1,11 @@
 # @teranes/popper
 
+## 5.0.0
+
+### Major Changes
+
+- umd support
+
 ## 4.0.0
 
 ### Major Changes

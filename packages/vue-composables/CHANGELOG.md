@@ -1,5 +1,11 @@
 # @teranes/vue-composables
 
+## 9.0.0
+
+### Major Changes
+
+- umd support
+
 ## 8.0.0
 
 ### Major Changes

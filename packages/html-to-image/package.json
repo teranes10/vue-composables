@@ -1,9 +1,9 @@
 {
   "name": "@teranes/html-to-image",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "type": "module",
   "scripts": {
-    "build": "node exporter.js && tsup"
+    "build": "node exporter.js && rollup -c rollup.config.js"
   },
   "author": "Teranes",
   "license": "MIT",
