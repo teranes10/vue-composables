@@ -17,6 +17,10 @@ export {
 } from './v-model/vModel';
 
 export {
+	type Attrs,
+} from './vue-types/attrs';
+
+export {
 	type ComponentEmit,
 } from './vue-types/componentEmit';
 
@@ -39,6 +43,14 @@ export {
 export {
 	type ComponentType,
 } from './vue-types/componentType';
+
+export {
+	type ExtractedEvents,
+} from './vue-types/extractedEvents';
+
+export {
+	type ShortEmits,
+} from './vue-types/shortEmits';
 
 export {
 	type WatchOnceOptions,

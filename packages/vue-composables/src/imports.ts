@@ -14,11 +14,14 @@ export const functions = [
 ];
 
 export const types = [
+	"Attrs",
 	"ComponentEmit",
 	"ComponentEvents",
 	"ComponentExposed",
 	"ComponentProps",
 	"ComponentSlots",
 	"ComponentType",
+	"ExtractedEvents",
+	"ShortEmits",
 ];
 
