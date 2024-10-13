@@ -1,6 +1,6 @@
 {
   "name": "@teranes/json",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "type": "module",
   "author": "Teranes",
   "license": "MIT",
@@ -30,7 +30,7 @@
     }
   },
   "dependencies": {
-    "@teranes/utils": "file:../utils",
+    "@teranes/utils": "workspace:*",
     "json-string-formatter": "^1.0.1"
   }
 }

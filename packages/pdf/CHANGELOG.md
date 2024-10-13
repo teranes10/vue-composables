@@ -1,5 +1,17 @@
 # @teranes/pdf
 
+## 8.0.0
+
+### Major Changes
+
+- 72d426a: dependency fix
+
+### Patch Changes
+
+- Updated dependencies [72d426a]
+  - @teranes/html-to-image@8.0.0
+  - @teranes/utils@8.0.0
+
 ## 7.0.0
 
 ### Major Changes

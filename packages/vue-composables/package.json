@@ -1,6 +1,6 @@
 {
   "name": "@teranes/vue-composables",
-  "version": "13.0.0",
+  "version": "14.0.0",
   "type": "module",
   "author": "Teranes",
   "license": "MIT",
@@ -30,7 +30,7 @@
     }
   },
   "dependencies": {
-    "@teranes/utils": "file:../utils",
+    "@teranes/utils": "workspace:*",
     "vue": "^3.5.8"
   }
 }

@@ -1,5 +1,11 @@
 # @teranes/popper
 
+## 9.0.0
+
+### Major Changes
+
+- 72d426a: dependency fix
+
 ## 8.0.0
 
 ### Major Changes

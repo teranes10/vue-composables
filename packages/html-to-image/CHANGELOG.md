@@ -1,5 +1,17 @@
 # @teranes/html-to-image
 
+## 8.0.0
+
+### Major Changes
+
+- 72d426a: dependency fix
+
+### Patch Changes
+
+- Updated dependencies [72d426a]
+  - @teranes/vue-composables@14.0.0
+  - @teranes/short-unique-id@8.0.0
+
 ## 7.0.0
 
 ### Major Changes

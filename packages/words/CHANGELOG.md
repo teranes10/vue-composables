@@ -1,5 +1,11 @@
 # @teranes/words
 
+## 8.0.0
+
+### Major Changes
+
+- 72d426a: dependency fix
+
 ## 7.0.0
 
 ### Major Changes
