@@ -1,5 +1,11 @@
 # @teranes/vue-composables
 
+## 13.0.0
+
+### Major Changes
+
+- 0023841: vue types
+
 ## 12.0.0
 
 ### Major Changes
