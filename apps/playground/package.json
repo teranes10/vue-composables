@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@teranes/vue-composables": "file://Users/teranesranjith/Projects/Plugins/vue-composables",
+    "@teranes/vue-composables": "workspace:*",
     "vue": "^3.4.29"
   },
   "devDependencies": {
