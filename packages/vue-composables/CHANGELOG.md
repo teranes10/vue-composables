@@ -1,5 +1,12 @@
 # @teranes/vue-composables
 
+## 14.0.1
+
+### Patch Changes
+
+- Updated dependencies [bad2e00]
+  - @teranes/utils@9.0.0
+
 ## 14.0.0
 
 ### Major Changes

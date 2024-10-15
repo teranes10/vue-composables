@@ -1,5 +1,11 @@
 # @teranes/utils
 
+## 9.0.0
+
+### Major Changes
+
+- bad2e00: mapper, boolean
+
 ## 8.0.0
 
 ### Major Changes

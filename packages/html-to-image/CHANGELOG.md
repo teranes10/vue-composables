@@ -1,5 +1,11 @@
 # @teranes/html-to-image
 
+## 8.0.1
+
+### Patch Changes
+
+- @teranes/vue-composables@14.0.1
+
 ## 8.0.0
 
 ### Major Changes
