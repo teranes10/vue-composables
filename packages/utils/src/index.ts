@@ -25,6 +25,10 @@ export {
 } from './blob/blobDownload';
 
 export {
+	boolean,
+} from './boolean/boolean';
+
+export {
 	mapper,
 } from './class/mapper';
 

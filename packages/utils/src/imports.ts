@@ -12,6 +12,7 @@ export const functions = [
 	"isArray",
 	"paginate",
 	"blobDownload",
+	"boolean",
 	"mapper",
 	"coalesce",
 	"coalesceTruthy",
