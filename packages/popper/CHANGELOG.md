@@ -1,5 +1,11 @@
 # @teranes/popper
 
+## 10.0.0
+
+### Major Changes
+
+- a92f962: exclude popper
+
 ## 9.0.0
 
 ### Major Changes
