@@ -1,5 +1,11 @@
 # @teranes/popper
 
+## 11.0.0
+
+### Major Changes
+
+- a30867f: treeshake
+
 ## 10.0.0
 
 ### Major Changes

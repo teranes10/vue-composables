@@ -1,5 +1,11 @@
 # @teranes/csv
 
+## 9.0.0
+
+### Major Changes
+
+- a30867f: treeshake
+
 ## 8.0.0
 
 ### Major Changes

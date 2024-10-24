@@ -1,5 +1,16 @@
 # @teranes/vue-composables
 
+## 15.0.0
+
+### Major Changes
+
+- a30867f: treeshake
+
+### Patch Changes
+
+- Updated dependencies [a30867f]
+  - @teranes/utils@10.0.0
+
 ## 14.0.1
 
 ### Patch Changes

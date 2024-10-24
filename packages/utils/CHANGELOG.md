@@ -1,5 +1,11 @@
 # @teranes/utils
 
+## 10.0.0
+
+### Major Changes
+
+- a30867f: treeshake
+
 ## 9.0.0
 
 ### Major Changes

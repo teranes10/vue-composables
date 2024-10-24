@@ -1,5 +1,17 @@
 # @teranes/html-to-image
 
+## 9.0.0
+
+### Major Changes
+
+- a30867f: treeshake
+
+### Patch Changes
+
+- Updated dependencies [a30867f]
+  - @teranes/short-unique-id@9.0.0
+  - @teranes/vue-composables@15.0.0
+
 ## 8.0.1
 
 ### Patch Changes
