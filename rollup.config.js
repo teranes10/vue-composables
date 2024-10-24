@@ -25,6 +25,7 @@ export function libraryConfig(name, {
         entryFileNames: `index.mjs`,
         exports: 'named',
         format: 'es',
+        preserveModules: true,
       },
       {
         dir: 'dist',
@@ -33,12 +34,16 @@ export function libraryConfig(name, {
       },
       {
         dir: 'dist',
-        entryFileNames: `index.js`,
+        entryFileNames: `index.umd.js`,
         format: 'umd',
         name: name,
         globals
       },
     ],
+    treeshake: {
+      moduleSideEffects: false,
+      propertyReadSideEffects: false,
+    },
     external,
     plugins: [
       del({ targets: 'dist/*' }),
