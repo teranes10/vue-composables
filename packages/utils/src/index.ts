@@ -88,6 +88,7 @@ export {
 } from './compare/compareType';
 
 export {
+	type DraggableOptions,
 	draggable,
 } from './element/draggable';
 
@@ -98,6 +99,11 @@ export {
 export {
 	isEventInsideElement,
 } from './element/isEventInsideElement';
+
+export {
+	type ResizableOptions,
+	resizable,
+} from './element/resizeable';
 
 export {
 	call,

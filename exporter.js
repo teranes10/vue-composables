@@ -203,13 +203,13 @@ export async function processExportFiles({
     url,
     rootDir = './src',
     indexFile = './src/index.ts',
-    importsFile = './src/imports.ts',
+    exportsFile = './src/exports.ts',
     excludes = [],
 } = {}) {
     const _rootDir = resolvePath(url, rootDir)
     const _indexFile = resolvePath(url, indexFile)
-    const _importsFile = resolvePath(url, importsFile)
-    const _excludes = [_indexFile, _importsFile, /\/_base\.ts$/, /test\.ts$/, /\.md$/, ...excludes]
+    const _exportsFile = resolvePath(url, exportsFile)
+    const _excludes = [_indexFile, _exportsFile, /\/_base\.ts$/, /test\.ts$/, /\.md$/, ...excludes]
 
     const exports = []
 
@@ -246,21 +246,21 @@ export async function processExportFiles({
 
     fs.writeFileSync(_indexFile, indexFileContent, 'utf-8')
 
-    // create imports files
-    let importsFileContent = ''
+    // create exports files
+    let exportsFileContent = ''
 
     Object.keys(exportTypes).forEach(type => {
-        importsFileContent += `export const ${namingConvention[type]} = [\n`
+        exportsFileContent += `export const ${namingConvention[type]} = [\n`
 
         exportTypes[type].forEach(name => {
-            importsFileContent += `\t"${name}",\n`
+            exportsFileContent += `\t"${name}",\n`
         })
 
-        importsFileContent += `];`
-        importsFileContent += `\n\n`
+        exportsFileContent += `];`
+        exportsFileContent += `\n\n`
     })
 
-    fs.writeFileSync(_importsFile, importsFileContent, 'utf-8')
+    fs.writeFileSync(_exportsFile, exportsFileContent, 'utf-8')
 }
 
 export function resolvePath(url, filePath) {

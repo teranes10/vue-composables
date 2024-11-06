@@ -4,7 +4,7 @@ export default [
   ...libraryConfig('POPPER', {
     external: ['@popperjs/core'],
     globals: {
-      '@popperjs/core': 'popper',
+      '@popperjs/core': 'Popper',
     }
   })
 ]

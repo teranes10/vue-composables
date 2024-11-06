@@ -2,6 +2,8 @@ export const types = [
 	"Arrayable",
 	"Hex",
 	"CssFilter",
+	"DraggableOptions",
+	"ResizableOptions",
 	"Params",
 	"Merge",
 ];
@@ -29,6 +31,7 @@ export const functions = [
 	"draggable",
 	"getBackgroundColor",
 	"isEventInsideElement",
+	"resizable",
 	"call",
 	"executeInBatches",
 	"getAccessedProps",

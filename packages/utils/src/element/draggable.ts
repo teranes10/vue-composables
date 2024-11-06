@@ -1,59 +1,66 @@
-export function draggable(
-  el: HTMLElement,
-  pointerEl?: HTMLElement,
-  containerEl?: HTMLElement,
-  callback?: (x: number, y: number) => void,
-) {
-  let _x = 0
-  let _y = 0
-  let x = 0
-  let y = 0
+export type DraggableOptions = {
+  handleElement?: HTMLElement,
+  dragAreaElement?: HTMLElement,
+  callback?: (x: number, y: number) => void
+}
 
-  if (pointerEl) {
-    pointerEl.style.cursor = 'move'
-    pointerEl.onmousedown = dragMouseDown
-  }
-  else {
-    el.style.cursor = 'move'
-    el.onmousedown = dragMouseDown
-  }
+export function draggable(draggableElement: HTMLElement, { handleElement, dragAreaElement, callback }: DraggableOptions) {
+  const _draggableElement = draggableElement
+  const _handleElement = handleElement || _draggableElement;
+  const _dragAreaElement = dragAreaElement || document.documentElement;
 
-  function dragMouseDown(e: MouseEvent) {
-    e.preventDefault()
+  _draggableElement.style.position = 'absolute';
+  _handleElement.style.cursor = 'move';
 
-    _x = e.clientX - el.offsetLeft
-    _y = e.clientY - el.offsetTop
+  _handleElement.addEventListener('mousedown', dragStart);
+  _handleElement.addEventListener('touchstart', dragStart, { passive: false });
 
-    if (containerEl || document) {
-      (containerEl || document).onmouseup = closeDragElement;
-      (containerEl || document).onmousemove = elementDrag
-    }
-  }
+  let _x: number, _y: number;
+  let x: number, y: number;
 
-  function elementDrag(e: MouseEvent) {
-    e.preventDefault()
+  function dragStart(e: MouseEvent | TouchEvent) {
+    e.preventDefault();
 
-    x = e.clientX - _x
-    y = e.clientY - _y
+    const clientX = e instanceof TouchEvent ? e.touches[0].clientX : e.clientX;
+    const clientY = e instanceof TouchEvent ? e.touches[0].clientY : e.clientY;
 
-    if (containerEl) {
-      const maxX = containerEl.offsetWidth - el.offsetWidth
-      if (x > maxX) {
-        x = maxX
-        closeDragElement()
-      }
-    }
+    _x = clientX - _draggableElement.offsetLeft;
+    _y = clientY - _draggableElement.offsetTop;
 
-    el.style.top = `${y}px`
-    el.style.left = `${x}px`
-
-    callback && callback(x, y)
+    _dragAreaElement.addEventListener('mousemove', onMove);
+    _dragAreaElement.addEventListener('touchmove', onMove, { passive: false });
+    _dragAreaElement.addEventListener('mouseup', dragEnd);
+    _dragAreaElement.addEventListener('touchend', dragEnd);
   }
 
-  function closeDragElement() {
-    if (containerEl || document) {
-      (containerEl || document).onmouseup = null;
-      (containerEl || document).onmousemove = null
-    }
+  function dragEnd() {
+    _dragAreaElement.removeEventListener('mousemove', onMove);
+    _dragAreaElement.removeEventListener('touchmove', onMove);
+    _dragAreaElement.removeEventListener('mouseup', dragEnd);
+    _dragAreaElement.removeEventListener('touchend', dragEnd);
+  }
+
+  function onMove(e: MouseEvent | TouchEvent) {
+    e.preventDefault();
+
+    const clientX = e instanceof TouchEvent ? e.touches[0].clientX : e.clientX;
+    const clientY = e instanceof TouchEvent ? e.touches[0].clientY : e.clientY;
+
+    x = clientX - _x;
+    y = clientY - _y;
+
+    const boundingEl = dragAreaElement || document.documentElement;
+    const maxX = boundingEl.clientWidth - _draggableElement.offsetWidth;
+    const maxY = boundingEl.clientHeight - _draggableElement.offsetHeight;
+
+    x = Math.max(0, Math.min(x, maxX));
+    y = Math.max(0, Math.min(y, maxY));
+
+    _draggableElement.style.left = `${x}px`;
+    _draggableElement.style.top = `${y}px`;
+    _draggableElement.style.bottom = 'auto';
+    _draggableElement.style.right = 'auto';
+
+    callback && callback(x, y);
   }
 }

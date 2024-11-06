@@ -1,6 +1,6 @@
 import { type Component, createVNode, render, shallowRef } from 'vue'
 import { watchOnce } from '@teranes/vue-composables'
-import { getShortUniqueId } from '@teranes/short-unique-id'
+import { getShortUniqueId } from  '@teranes/short-unique-id'
 
 export function getRenderContainer(): HTMLElement {
   if (!document) {

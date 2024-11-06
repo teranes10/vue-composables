@@ -11,7 +11,7 @@ import alias from '@rollup/plugin-alias';
 
 export function libraryConfig(name, {
   input = './src/index.ts',
-  imports = './src/imports.ts',
+  exports = './src/exports.ts',
   aliasEntries = [],
   external = [],
   globals = {}
@@ -63,17 +63,17 @@ export function libraryConfig(name, {
     ],
   },
   {
-    input: imports,
+    input: exports,
     output: [
       {
         dir: 'dist',
-        entryFileNames: `imports.mjs`,
+        entryFileNames: `exports.mjs`,
         exports: 'named',
         format: 'es',
       },
       {
         dir: 'dist',
-        entryFileNames: `imports.cjs`,
+        entryFileNames: `exports.cjs`,
         format: 'cjs',
       },
     ],
