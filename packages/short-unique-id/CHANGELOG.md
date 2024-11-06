@@ -1,5 +1,11 @@
 # @teranes/short-unique-id
 
+## 10.0.0
+
+### Major Changes
+
+- c2f7d98: exports fix
+
 ## 9.0.0
 
 ### Major Changes

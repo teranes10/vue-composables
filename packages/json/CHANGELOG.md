@@ -1,5 +1,16 @@
 # @teranes/json
 
+## 10.0.0
+
+### Major Changes
+
+- c2f7d98: exports fix
+
+### Patch Changes
+
+- Updated dependencies [c2f7d98]
+  - @teranes/utils@11.0.0
+
 ## 9.0.0
 
 ### Major Changes

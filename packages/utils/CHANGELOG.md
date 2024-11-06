@@ -1,5 +1,11 @@
 # @teranes/utils
 
+## 11.0.0
+
+### Major Changes
+
+- c2f7d98: exports fix
+
 ## 10.0.0
 
 ### Major Changes

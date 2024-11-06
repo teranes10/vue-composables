@@ -1,5 +1,17 @@
 # @teranes/html-to-image
 
+## 10.0.0
+
+### Major Changes
+
+- c2f7d98: exports fix
+
+### Patch Changes
+
+- Updated dependencies [c2f7d98]
+  - @teranes/short-unique-id@10.0.0
+  - @teranes/vue-composables@16.0.0
+
 ## 9.0.0
 
 ### Major Changes
