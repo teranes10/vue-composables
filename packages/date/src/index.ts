@@ -2,9 +2,9 @@ export {
 	type DateObject,
 	type DateOptions,
 	date,
-} from './date';
+} from './date/date';
 
 export {
 	isValidDate,
-} from './isValidDate';
+} from './is-valid-date/isValidDate';
 

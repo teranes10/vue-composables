@@ -1,4 +1,4 @@
-import { CssFilter, Hex, HSL, RGB } from "./colorTypes"
+import type { CssFilter, HSL, Hex, RGB } from './color-types/colorTypes'
 
 export class CssFilterReSolver {
   private rgb: RGB
@@ -134,10 +134,10 @@ export class CssFilterReSolver {
       return Math.round(filters[idx] * multiplier)
     }
     return `invert(${fmt(0)}%) sepia(${fmt(1)}%) saturate(${fmt(
-            2,
-        )}%) hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(
-            5,
-        )}%);`
+      2,
+    )}%) hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(
+      5,
+    )}%);`
   }
 }
 

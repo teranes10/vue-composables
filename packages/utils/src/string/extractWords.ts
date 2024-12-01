@@ -17,7 +17,7 @@ const rsVarRange = '\\ufe0e\\ufe0f'
 const rsBreakRange = rsMathOpRange + rsNonCharRange + rsPunctuationRange + rsSpaceRange
 
 /** Used to compose unicode capture groups. */
-const rsApos = "['\u2019]"
+const rsApos = '[\'\u2019]'
 const rsBreak = `[${rsBreakRange}]`
 const rsCombo = `[${rsComboRange}]`
 const rsDigit = '\\d'
@@ -45,6 +45,7 @@ const rsOrdUpper = '\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])'
 const rsSeq = rsOptVar + reOptMod + rsOptJoin
 const rsEmoji = `(?:${[rsDingbat, rsRegional, rsSurrPair].join('|')})${rsSeq}`
 
+// eslint-disable-next-line no-misleading-character-class, regexp/prefer-character-class, regexp/no-dupe-characters-character-class, regexp/control-character-escape
 const reUnicodeWords = RegExp([
   `${rsUpper}?${rsLower}+${rsOptContrLower}(?=${[rsBreak, rsUpper, '$'].join('|')})`,
   `${rsMiscUpper}+${rsOptContrUpper}(?=${[rsBreak, rsUpper + rsMiscLower, '$'].join('|')})`,
@@ -53,7 +54,7 @@ const reUnicodeWords = RegExp([
   rsOrdUpper,
   rsOrdLower,
   `${rsDigit}+`,
-  rsEmoji
+  rsEmoji,
 ].join('|'), 'g')
 
 function unicodeWords(string: string) {
@@ -61,18 +62,18 @@ function unicodeWords(string: string) {
 }
 
 const hasUnicodeWord = RegExp.prototype.test.bind(
-  /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/,
-);
-
+  /[a-z][A-Z]|[A-Z]{2}[a-z]|\d[a-zA-Z]|[a-zA-Z]\d|[^a-zA-Z0-9 ]/,
+)
 
 /** Used to match words composed of alphanumeric characters. */
-const reAsciiWord = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;
+// eslint-disable-next-line no-control-regex
+const reAsciiWord = /[^\x00-\x2F\x3A-\x40\x5B-\x60\x7B-\x7F]+/g
 
 function asciiWords(string: string) {
-  return string.match(reAsciiWord);
+  return string.match(reAsciiWord)
 }
 
 export function extractWords(string: string) {
-  const result = hasUnicodeWord(string) ? unicodeWords(string) : asciiWords(string);
-  return result || [];
+  const result = hasUnicodeWord(string) ? unicodeWords(string) : asciiWords(string)
+  return result || []
 }

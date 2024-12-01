@@ -2,37 +2,37 @@ export {
 	type PdfOptions,
 	type PdfCoordinate,
 	PDF,
-} from './pdf';
+} from './pdf/pdf';
 
 export {
 	type PdfAddComponentOptions,
 	pdfAddComponent,
-} from './pdfAddComponent';
+} from './pdf-add-component/pdfAddComponent';
 
 export {
 	type PdfAddHtmlOptions,
 	pdfAddHtml,
-} from './pdfAddHtml';
+} from './pdf-add-html/pdfAddHtml';
 
 export {
 	type PdfAddImageOptions,
 	pdfAddImage,
-} from './pdfAddImage';
+} from './pdf-add-image/pdfAddImage';
 
 export {
 	type PdfTableHeader,
 	type PdfDrawItemOptions,
 	type PdfAddTableOptions,
 	pdfAddTable,
-} from './pdfAddTable';
+} from './pdf-add-table/pdfAddTable';
 
 export {
 	type PdfTextOptions,
 	pdfAddText,
-} from './pdfAddText';
+} from './pdf-add-text/pdfAddText';
 
 export {
 	type PdfWatermarkOptions,
 	pdfAddWatermark,
-} from './pdfAddWatermark';
+} from './pdf-add-watermark/pdfAddWatermark';
 

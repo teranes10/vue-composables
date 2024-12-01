@@ -8,6 +8,7 @@ export const functions = [
 	"pagination",
 	"eventListener",
 	"infiniteScroll",
+	"resizeObserver",
 	"vModel",
 	"watchOnce",
 	"getScreenWidth",

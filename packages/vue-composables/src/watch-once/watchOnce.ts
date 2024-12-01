@@ -1,5 +1,5 @@
-import { nextTick, watch } from 'vue'
-import type { WatchCallback, WatchSource, WatchStopHandle } from 'vue'
+import { nextTick, watch } from '@vue/runtime-core'
+import type { WatchCallback, WatchSource, WatchStopHandle } from '@vue/reactivity'
 import { debounce } from '@teranes/utils'
 import type { Params } from '@teranes/utils'
 

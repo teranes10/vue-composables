@@ -1,5 +1,7 @@
 import { libraryConfig } from '../../rollup.config.js'
 
 export default [
-  ...libraryConfig('WORDS')
+  ...libraryConfig('WORDS', {
+    input: { words: './src/index.ts' },
+  }),
 ]

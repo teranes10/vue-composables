@@ -1,4 +1,4 @@
-import { onUnmounted } from 'vue'
+import { onUnmounted } from '@vue/runtime-core'
 import { throttle } from '@teranes/utils'
 
 export function infiniteScroll(

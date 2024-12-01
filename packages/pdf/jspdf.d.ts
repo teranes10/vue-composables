@@ -159,7 +159,7 @@ export interface HTMLWorkerProgress extends Promise<any> {
   n: number
   ratio: number
   state: any
-  stack: Function[]
+  stack: (...args: any[]) => any[]
 }
 
 export interface HTMLWorker extends Promise<any> {

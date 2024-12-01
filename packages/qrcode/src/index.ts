@@ -3,5 +3,5 @@ export {
 	type QrCodeErrorCorrectionLevel,
 	type QrCodeOptions,
 	generateQrCode,
-} from './generateQr';
+} from './generate-qr/generateQr';
 

@@ -1,5 +1,5 @@
-import type { Component } from 'vue'
-import { htmlToImage, type HtmlToImageOptions } from '../html-to-image/htmlToImage'
+import type { Component } from '@vue/runtime-core'
+import { type HtmlToImageOptions, htmlToImage } from '../html-to-image/htmlToImage'
 import { type ComponentToHtmlOptions, componentToHtml } from '../component-to-html/componentToHtml'
 
 export interface ComponentToImageOptions extends ComponentToHtmlOptions, HtmlToImageOptions {

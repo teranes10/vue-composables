@@ -3,5 +3,5 @@ export {
 	type Popper,
 	type StateType,
 	type PopperInput,
-} from './popper';
+} from './popper/popper';
 

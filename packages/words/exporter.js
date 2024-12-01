@@ -1,5 +1,5 @@
 import { processExportFiles } from '../../exporter.js'
 
 processExportFiles({
-    url: import.meta.url
+  url: import.meta.url,
 })

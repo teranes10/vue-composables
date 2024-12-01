@@ -1,21 +1,21 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-        "baseUrl": ".",
-        "rootDir": ".",
-        "paths": {
-            "dayjs": [
-                "dayjs.d.ts"
-            ]
-        },
-        "outDir": "dist"
-    },
-    "include": [
-        "src/**/*",
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      "dayjs": [
         "dayjs.d.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        "dist"
-    ]
+      ]
+    },
+    "outDir": "dist"
+  },
+  "include": [
+    "src/**/*",
+    "dayjs.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

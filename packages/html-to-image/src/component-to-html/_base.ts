@@ -1,6 +1,8 @@
-import { type Component, createVNode, render, shallowRef } from 'vue'
+import { type Component, createVNode } from '@vue/runtime-core'
+import { render } from '@vue/runtime-dom'
+import { shallowRef } from '@vue/reactivity'
 import { watchOnce } from '@teranes/vue-composables'
-import { getShortUniqueId } from  '@teranes/short-unique-id'
+import { getShortUniqueId } from '@teranes/short-unique-id'
 
 export function getRenderContainer(): HTMLElement {
   if (!document) {

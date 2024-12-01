@@ -1,91 +1,91 @@
 export {
 	type Arrayable,
-} from './array/arrayable';
+} from './array/arrayable/arrayable';
 
 export {
 	filter,
-} from './array/filter';
+} from './array/filter/filter';
 
 export {
 	type FilterAndPaginateOptions,
 	filterAndPaginate,
-} from './array/filterAndPaginate';
+} from './array/filter-and-paginate/filterAndPaginate';
 
 export {
 	isArray,
-} from './array/isArray';
+} from './array/is-array/isArray';
 
 export {
 	paginate,
-} from './array/paginate';
+} from './array/paginate/paginate';
 
 export {
 	type BlobDownloadOptions,
 	blobDownload,
-} from './blob/blobDownload';
+} from './blob/blob-download/blobDownload';
 
 export {
 	boolean,
-} from './boolean/boolean';
+} from './boolean/boolean/boolean';
 
 export {
 	mapper,
-} from './class/mapper';
+} from './class/mapper/mapper';
 
 export {
 	coalesce,
-} from './coalesce/coalesce';
+} from './coalesce/coalesce/coalesce';
 
 export {
 	coalesceTruthy,
-} from './coalesce/coalesceTruthy';
+} from './coalesce/coalesce-truthy/coalesceTruthy';
 
 export {
 	type Hex,
 	type RGB,
 	type HSL,
 	type CssFilter,
-} from './color/colorTypes';
+} from './color/color-types/colorTypes';
 
 export {
 	getHexColorShade,
-} from './color/getHexColorShade';
+} from './color/get-hex-color-shade/getHexColorShade';
 
 export {
 	hexToFilter,
-} from './color/hexToFilter';
+} from './color/hex-to-filter/hexToFilter';
 
 export {
 	hexToHsl,
-} from './color/hexToHsl';
+} from './color/hex-to-hsl/hexToHsl';
 
 export {
 	hexToRgb,
-} from './color/hexToRgb';
+} from './color/hex-to-rgb/hexToRgb';
 
 export {
 	hslToFilter,
-} from './color/hslToFilter';
+} from './color/hsl-to-filter/hslToFilter';
 
 export {
 	hslToHex,
-} from './color/hslToHex';
+} from './color/hsl-to-hex/hslToHex';
 
 export {
 	compare,
-} from './compare/compare';
+} from './compare/compare/compare';
 
 export {
 	compareArray,
-} from './compare/compareArray';
+} from './compare/compare-array/compareArray';
 
 export {
 	compareObject,
-} from './compare/compareObject';
+} from './compare/compare-object/compareObject';
 
 export {
 	compareType,
-} from './compare/compareType';
+} from './compare/compare-type/compareType';
 
 export {
 	type DraggableOptions,
@@ -180,39 +180,43 @@ export {
 
 export {
 	assignDefaults,
-} from './object/assignDefaults';
+} from './object/assign-defaults/assignDefaults';
 
 export {
 	cloneDeep,
-} from './object/cloneDeep';
+} from './object/clone-deep/cloneDeep';
 
 export {
 	getValueByObjectPath,
-} from './object/getValueByObjectPath';
+} from './object/get-value-by-object-path/getValueByObjectPath';
 
 export {
 	isObject,
-} from './object/isObject';
+} from './object/is-object/isObject';
 
 export {
 	mapKey,
-} from './object/mapKey';
+} from './object/map-key/mapKey';
 
 export {
 	mapValue,
-} from './object/mapValue';
+} from './object/map-value/mapValue';
 
 export {
 	type Merge,
-} from './object/merge';
+} from './object/merge/merge';
 
 export {
 	objectAssign,
-} from './object/objectAssign';
+} from './object/object-assign/objectAssign';
 
 export {
 	setValueByObjectPath,
-} from './object/setValueByObjectPath';
+} from './object/set-value-by-object-path/setValueByObjectPath';
+
+export {
+	type ToUnion,
+} from './object/to-union/toUnion';
 
 export {
 	isRegex,

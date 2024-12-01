@@ -1,4 +1,5 @@
-import { type Ref, nextTick, ref, watch } from 'vue'
+import { type Ref, ref, watch } from '@vue/reactivity'
+import { nextTick } from '@vue/runtime-dom'
 import { coalesce } from '@teranes/utils'
 
 export function vModel<P extends object, K extends keyof P, Name extends string>(
@@ -12,7 +13,7 @@ export function vModel<P extends object, K extends keyof P, Name extends string>
   key: K,
   emit?: (name: Name, ...args: any[]) => void,
   defaultValue?: NonNullable<P[K]>,
-): Ref<NonNullable<P[K]>>;
+): Ref<NonNullable<P[K]>>
 
 export function vModel<P extends object, K extends keyof P, Name extends string>(
   props: P,

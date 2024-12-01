@@ -1,10 +1,10 @@
-import type { CSSProperties, Component } from 'vue'
-import { defineComponent, h } from 'vue'
+import type { CSSProperties } from '@vue/runtime-dom'
+import { type Component, defineComponent, h } from '@vue/runtime-core'
 import type { RenderComponentOptions } from './_base'
 import { renderComponent } from './_base'
 
 export interface ComponentToHtmlOptions extends RenderComponentOptions {
-  style?: CSSProperties
+  style?: Partial<CSSProperties | Record<string, string | number | undefined>>
 }
 
 export async function componentToHtml(component: Component, { style, debounceDelay }: Partial<ComponentToHtmlOptions> = {}) {

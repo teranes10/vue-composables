@@ -1,5 +1,7 @@
 import { libraryConfig } from '../../rollup.config.js'
 
 export default [
-  ...libraryConfig('DAY')
+  ...libraryConfig('DATE', {
+    input: { date: './src/index.ts' },
+  }),
 ]

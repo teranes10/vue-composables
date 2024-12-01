@@ -13,6 +13,10 @@ export {
 } from './element/infiniteScroll';
 
 export {
+	resizeObserver,
+} from './element/resize-observer';
+
+export {
 	vModel,
 } from './v-model/vModel';
 

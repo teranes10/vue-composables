@@ -1,6 +1,5 @@
-import { type Ref, computed, ref, watch } from 'vue'
-import { compare } from '@teranes/utils'
-import { filterAndPaginate } from '@teranes/utils'
+import { type Ref, computed, ref, watch } from '@vue/reactivity'
+import { compare, filterAndPaginate } from '@teranes/utils'
 
 export interface PaginationLoadOptions<T> {
   page: number
@@ -92,7 +91,7 @@ export function pagination<T>(
   }
 
   const isWaiting = ref(false)
-  const waitingTimer = ref<NodeJS.Timeout>()
+  const waitingTimer = ref<ReturnType<typeof setTimeout>>()
   const waitingTimerDelay = computed(() => isSearching.value ? computedSearchDelay.value : optionsDelay)
 
   watch(

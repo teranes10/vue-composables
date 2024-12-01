@@ -13,7 +13,7 @@ export const TAG = {
   Regex: '[object RegExp]',
   Symbol: '[object Symbol]',
   Undefined: '[object Undefined]',
-  Null: '[object Null]'
+  Null: '[object Null]',
 } as const
 
 export function getTag<T>(value: T) {

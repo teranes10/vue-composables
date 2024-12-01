@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { getFromStorage } from './getFromStorage'
-import { enableMockStorage } from './_mockStorage'
+import { enableMockStorage } from './_base'
 
 describe('getFromStorage function', () => {
   const mock = enableMockStorage()

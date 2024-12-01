@@ -1,8 +1,8 @@
 export {
 	jsonStringFormatter,
-} from './jsonStringFormatter';
+} from './json-string-formatter/jsonStringFormatter';
 
 export {
 	toCamelCaseJson,
-} from './toCamelCaseJson';
+} from './to-camel-case-json/toCamelCaseJson';
 

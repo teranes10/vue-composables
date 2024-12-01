@@ -1,4 +1,5 @@
-import { onMounted, onUnmounted, readonly, ref } from 'vue'
+import { onMounted, onUnmounted } from '@vue/runtime-core'
+import { readonly, ref } from '@vue/reactivity'
 import { debounce } from '@teranes/utils'
 
 export function getScreenWidth() {

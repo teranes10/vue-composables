@@ -2,7 +2,7 @@ import utc from 'dayjs/plugin/utc.js'
 import advancedFormat from 'dayjs/plugin/advancedFormat.js'
 import customParseFormat from 'dayjs/plugin/customParseFormat.js'
 import dayjs from 'dayjs'
-import { Dayjs } from '../dayjs'
+import type { Dayjs } from '../dayjs'
 
 dayjs.extend(utc)
 dayjs.extend(advancedFormat)

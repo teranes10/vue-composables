@@ -1,21 +1,21 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-        "baseUrl": ".",
-        "rootDir": ".",
-        "paths": {
-            "qrcode": [
-                "qrcode.d.ts"
-            ]
-        },
-        "outDir": "dist"
-    },
-    "include": [
-        "src/**/*",
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      "qrcode": [
         "qrcode.d.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        "dist"
-    ]
+      ]
+    },
+    "outDir": "dist"
+  },
+  "include": [
+    "src/**/*",
+    "qrcode.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

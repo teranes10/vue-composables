@@ -2,10 +2,9 @@ export const types = [
 	"Arrayable",
 	"Hex",
 	"CssFilter",
-	"DraggableOptions",
-	"ResizableOptions",
 	"Params",
 	"Merge",
+	"ToUnion",
 ];
 
 export const functions = [
@@ -83,6 +82,8 @@ export const interfaces = [
 	"BlobDownloadOptions",
 	"RGB",
 	"HSL",
+	"DraggableOptions",
+	"ResizableOptions",
 	"ImageProperties",
 	"CurrencyStringOptions",
 ];
