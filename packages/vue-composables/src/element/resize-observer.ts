@@ -1,3 +1,4 @@
+import { debounce } from '@teranes/utils'
 import { type MaybeRef, type Ref, ref, unref } from '@vue/reactivity'
 import { onBeforeUnmount, onMounted } from '@vue/runtime-core'
 
@@ -13,10 +14,10 @@ export function resizeObserver(
 ): Ref<ResizeResult> {
   const result = ref<ResizeResult>({ width: 0, height: 0 })
 
-  const resizeObserver = new ResizeObserver((entries) => {
+  const resizeObserver = new ResizeObserver(debounce((entries) => {
     result.value = toResult(entries?.[0])
     callback?.(result.value)
-  })
+  }, 10))
 
   function toResult(entry: ResizeObserverEntry): ResizeResult {
     return {
