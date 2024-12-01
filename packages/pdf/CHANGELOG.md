@@ -1,5 +1,11 @@
 # @teranes/pdf
 
+## 11.0.1
+
+### Patch Changes
+
+- @teranes/html-to-image@11.0.1
+
 ## 11.0.0
 
 ### Major Changes

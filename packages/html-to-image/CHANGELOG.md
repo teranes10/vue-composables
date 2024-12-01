@@ -1,5 +1,12 @@
 # @teranes/html-to-image
 
+## 11.0.1
+
+### Patch Changes
+
+- Updated dependencies [5f05b94]
+  - @teranes/vue-composables@18.0.0
+
 ## 11.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @teranes/vue-composables
 
+## 18.0.0
+
+### Major Changes
+
+- 5f05b94: fix
+
 ## 17.0.0
 
 ### Major Changes
