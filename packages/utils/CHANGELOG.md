@@ -1,5 +1,11 @@
 # @teranes/utils
 
+## 12.0.0
+
+### Major Changes
+
+- 52fca2f: resize-observer
+
 ## 11.0.0
 
 ### Major Changes

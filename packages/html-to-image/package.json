@@ -1,38 +1,41 @@
 {
   "name": "@teranes/html-to-image",
-  "version": "10.0.0",
   "type": "module",
-  "scripts": {
-    "build": "node exporter.js && rollup -c rollup.config.js"
-  },
+  "version": "11.0.0",
   "author": "Teranes",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/teranes10/vue-composables.git"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/html-to-image.d.ts",
+      "import": "./dist/html-to-image.mjs",
+      "require": "./dist/html-to-image.cjs"
+    },
+    "./exports": {
+      "import": "./dist/exports.mjs",
+      "require": "./dist/exports.cjs"
+    }
+  },
+  "main": "./dist/html-to-image.cjs",
+  "module": "./dist/html-to-image.mjs",
+  "types": "./dist/html-to-image.d.ts",
   "files": [
     "dist"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "umd": "./dist/index.umd.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.js"
-    },
-    "./exports": {
-      "require": "./dist/exports.cjs",
-      "import": "./dist/exports.mjs"
-    }
+  "scripts": {
+    "build": "node exporter.js && rollup -c rollup.config.js"
   },
+  "umd": "./dist/html-to-image.umd.js",
   "dependencies": {
     "@teranes/short-unique-id": "workspace:*",
     "@teranes/vue-composables": "workspace:*",
+    "@vue/reactivity": "^3.5.13",
+    "@vue/runtime-core": "^3.5.13",
+    "@vue/runtime-dom": "^3.5.13",
     "html-to-image": "^1.11.11",
-    "vue": "^3.5.8"
+    "vue": "^3.5.13"
   }
 }

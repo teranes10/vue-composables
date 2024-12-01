@@ -1,34 +1,34 @@
 {
   "name": "@teranes/json",
-  "version": "10.0.0",
   "type": "module",
+  "version": "11.0.0",
   "author": "Teranes",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/teranes10/vue-composables.git"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/json.d.ts",
+      "import": "./dist/json.mjs",
+      "require": "./dist/json.cjs"
+    },
+    "./exports": {
+      "import": "./dist/exports.mjs",
+      "require": "./dist/exports.cjs"
+    }
+  },
+  "main": "./dist/json.cjs",
+  "module": "./dist/json.mjs",
+  "types": "./dist/json.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "node exporter.js && rollup -c rollup.config.js"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "umd": "./dist/index.umd.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.js"
-    },
-    "./exports": {
-      "require": "./dist/exports.cjs",
-      "import": "./dist/exports.mjs"
-    }
-  },
+  "umd": "./dist/json.umd.js",
   "dependencies": {
     "@teranes/utils": "workspace:*",
     "json-string-formatter": "^1.0.1"

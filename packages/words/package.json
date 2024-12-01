@@ -1,38 +1,38 @@
 {
   "name": "@teranes/words",
-  "version": "10.0.0",
   "type": "module",
+  "version": "11.0.0",
   "author": "Teranes",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/teranes10/vue-composables.git"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/words.d.ts",
+      "import": "./dist/words.mjs",
+      "require": "./dist/words.cjs"
+    },
+    "./exports": {
+      "import": "./dist/exports.mjs",
+      "require": "./dist/exports.cjs"
+    }
+  },
+  "main": "./dist/words.cjs",
+  "module": "./dist/words.mjs",
+  "types": "./dist/words.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "node exporter.js && rollup -c rollup.config.js"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "umd": "./dist/index.umd.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.js"
-    },
-    "./exports": {
-      "require": "./dist/exports.cjs",
-      "import": "./dist/exports.mjs"
-    }
+  "umd": "./dist/words.umd.js",
+  "dependencies": {
+    "pluralize": "^8.0.0"
   },
   "devDependencies": {
     "@types/pluralize": "^0.0.33"
-  },
-  "dependencies": {
-    "pluralize": "^8.0.0"
   }
 }

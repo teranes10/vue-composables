@@ -1,38 +1,38 @@
 {
   "name": "@teranes/csv",
-  "version": "10.0.0",
   "type": "module",
+  "version": "11.0.0",
   "author": "Teranes",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/teranes10/vue-composables.git"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/csv.d.ts",
+      "import": "./dist/csv.mjs",
+      "require": "./dist/csv.cjs"
+    },
+    "./exports": {
+      "import": "./dist/exports.mjs",
+      "require": "./dist/exports.cjs"
+    }
+  },
+  "main": "./dist/csv.cjs",
+  "module": "./dist/csv.mjs",
+  "types": "./dist/csv.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "node exporter.js && rollup -c rollup.config.js"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "umd": "./dist/index.umd.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.js"
-    },
-    "./exports": {
-      "require": "./dist/exports.cjs",
-      "import": "./dist/exports.mjs"
-    }
+  "umd": "./dist/csv.umd.js",
+  "dependencies": {
+    "papaparse": "^5.4.1"
   },
   "devDependencies": {
     "@types/papaparse": "^5.3.14"
-  },
-  "dependencies": {
-    "papaparse": "^5.4.1"
   }
 }

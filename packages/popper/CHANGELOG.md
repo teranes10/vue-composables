@@ -1,5 +1,11 @@
 # @teranes/popper
 
+## 13.0.0
+
+### Major Changes
+
+- 52fca2f: resize-observer
+
 ## 12.0.0
 
 ### Major Changes

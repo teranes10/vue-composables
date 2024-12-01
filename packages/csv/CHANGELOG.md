@@ -1,5 +1,11 @@
 # @teranes/csv
 
+## 11.0.0
+
+### Major Changes
+
+- 52fca2f: resize-observer
+
 ## 10.0.0
 
 ### Major Changes

@@ -1,5 +1,16 @@
 # @teranes/vue-composables
 
+## 17.0.0
+
+### Major Changes
+
+- 52fca2f: resize-observer
+
+### Patch Changes
+
+- Updated dependencies [52fca2f]
+  - @teranes/utils@12.0.0
+
 ## 16.0.0
 
 ### Major Changes

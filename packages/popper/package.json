@@ -1,34 +1,34 @@
 {
   "name": "@teranes/popper",
-  "version": "12.0.0",
   "type": "module",
+  "version": "13.0.0",
   "author": "Teranes",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/teranes10/vue-composables.git"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/popper.d.ts",
+      "import": "./dist/popper.mjs",
+      "require": "./dist/popper.cjs"
+    },
+    "./exports": {
+      "import": "./dist/exports.mjs",
+      "require": "./dist/exports.cjs"
+    }
+  },
+  "main": "./dist/popper.cjs",
+  "module": "./dist/popper.mjs",
+  "types": "./dist/popper.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "node exporter.js && rollup -c rollup.config.js"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "umd": "./dist/index.umd.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.js"
-    },
-    "./exports": {
-      "require": "./dist/exports.cjs",
-      "import": "./dist/exports.mjs"
-    }
-  },
+  "umd": "./dist/popper.umd.js",
   "dependencies": {
     "@popperjs/core": "^2.11.8"
   }

@@ -1,39 +1,41 @@
 {
   "name": "@teranes/pdf",
-  "version": "10.0.0",
   "type": "module",
+  "version": "11.0.0",
   "author": "Teranes",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/teranes10/vue-composables.git"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/pdf.d.ts",
+      "import": "./dist/pdf.mjs",
+      "require": "./dist/pdf.cjs"
+    },
+    "./exports": {
+      "import": "./dist/exports.mjs",
+      "require": "./dist/exports.cjs"
+    }
+  },
+  "main": "./dist/pdf.cjs",
+  "module": "./dist/pdf.mjs",
+  "types": "./dist/pdf.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "node exporter.js && rollup -c rollup.config.js"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "umd": "./dist/index.umd.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.js"
-    },
-    "./exports": {
-      "require": "./dist/exports.cjs",
-      "import": "./dist/exports.mjs"
-    }
-  },
+  "umd": "./dist/pdf.umd.js",
   "dependencies": {
     "@teranes/html-to-image": "workspace:*",
     "@teranes/utils": "workspace:*",
+    "@vue/runtime-core": "^3.5.13",
+    "@vue/runtime-dom": "^3.5.13",
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.3",
-    "vue": "^3.5.8"
+    "vue": "^3.5.13"
   }
 }

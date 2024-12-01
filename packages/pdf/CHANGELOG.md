@@ -1,5 +1,17 @@
 # @teranes/pdf
 
+## 11.0.0
+
+### Major Changes
+
+- 52fca2f: resize-observer
+
+### Patch Changes
+
+- Updated dependencies [52fca2f]
+  - @teranes/html-to-image@11.0.0
+  - @teranes/utils@12.0.0
+
 ## 10.0.0
 
 ### Major Changes

@@ -1,34 +1,34 @@
 {
   "name": "@teranes/short-unique-id",
-  "version": "10.0.0",
   "type": "module",
+  "version": "11.0.0",
   "author": "Teranes",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/teranes10/vue-composables.git"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/short-unique-id.d.ts",
+      "import": "./dist/short-unique-id.mjs",
+      "require": "./dist/short-unique-id.cjs"
+    },
+    "./exports": {
+      "import": "./dist/exports.mjs",
+      "require": "./dist/exports.cjs"
+    }
+  },
+  "main": "./dist/short-unique-id.cjs",
+  "module": "./dist/short-unique-id.mjs",
+  "types": "./dist/short-unique-id.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "node exporter.js && rollup -c rollup.config.js"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "umd": "./dist/index.umd.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.js"
-    },
-    "./exports": {
-      "require": "./dist/exports.cjs",
-      "import": "./dist/exports.mjs"
-    }
-  },
+  "umd": "./dist/short-unique-id.umd.js",
   "dependencies": {
     "nanoid": "^5.0.7"
   }

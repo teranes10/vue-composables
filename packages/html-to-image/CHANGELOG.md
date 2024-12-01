@@ -1,5 +1,17 @@
 # @teranes/html-to-image
 
+## 11.0.0
+
+### Major Changes
+
+- 52fca2f: resize-observer
+
+### Patch Changes
+
+- Updated dependencies [52fca2f]
+  - @teranes/short-unique-id@11.0.0
+  - @teranes/vue-composables@17.0.0
+
 ## 10.0.0
 
 ### Major Changes
