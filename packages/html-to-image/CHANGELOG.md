@@ -1,5 +1,17 @@
 # @teranes/html-to-image
 
+## 12.0.0
+
+### Major Changes
+
+- bdc3de0: export.d.ts
+
+### Patch Changes
+
+- Updated dependencies [bdc3de0]
+  - @teranes/short-unique-id@12.0.0
+  - @teranes/vue-composables@19.0.0
+
 ## 11.0.1
 
 ### Patch Changes

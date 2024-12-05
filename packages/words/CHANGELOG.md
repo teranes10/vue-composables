@@ -1,5 +1,11 @@
 # @teranes/words
 
+## 12.0.0
+
+### Major Changes
+
+- bdc3de0: export.d.ts
+
 ## 11.0.0
 
 ### Major Changes

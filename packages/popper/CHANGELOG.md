@@ -1,5 +1,11 @@
 # @teranes/popper
 
+## 14.0.0
+
+### Major Changes
+
+- bdc3de0: export.d.ts
+
 ## 13.0.0
 
 ### Major Changes

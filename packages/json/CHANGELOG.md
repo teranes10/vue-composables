@@ -1,5 +1,16 @@
 # @teranes/json
 
+## 12.0.0
+
+### Major Changes
+
+- bdc3de0: export.d.ts
+
+### Patch Changes
+
+- Updated dependencies [bdc3de0]
+  - @teranes/utils@13.0.0
+
 ## 11.0.0
 
 ### Major Changes

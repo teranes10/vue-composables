@@ -1,5 +1,11 @@
 # @teranes/utils
 
+## 13.0.0
+
+### Major Changes
+
+- bdc3de0: export.d.ts
+
 ## 12.0.0
 
 ### Major Changes
