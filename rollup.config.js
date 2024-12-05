@@ -91,6 +91,17 @@ export function libraryConfig(name, {
     plugins: [
       dts({ respectExternal: false }),
     ],
+  }, {
+    input: './src/exports.ts',
+    output: [
+      {
+        file: `dist/exports.d.ts`,
+        format: 'es',
+      },
+    ],
+    plugins: [
+      dts({ respectExternal: false }),
+    ],
   }]
 }
 
