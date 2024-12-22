@@ -1,10 +1,9 @@
 export const interfaces = [
-	"DateObject",
-	"DateOptions",
-];
+  'DateObject',
+  'DateOptions',
+]
 
 export const functions = [
-	"date",
-	"isValidDate",
-];
-
+  'date',
+  'isValidDate',
+]

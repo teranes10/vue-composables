@@ -1,5 +1,4 @@
 export const functions = [
-	"csvToJson",
-	"jsonToCsv",
-];
-
+  'csvToJson',
+  'jsonToCsv',
+]

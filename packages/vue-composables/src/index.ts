@@ -1,67 +1,66 @@
 export {
-	type PaginationLoadOptions,
-	type PaginationOptions,
-	pagination,
-} from './array/pagination';
+  type PaginationLoadOptions,
+  type PaginationOptions,
+  pagination,
+} from './array/pagination'
 
 export {
-	eventListener,
-} from './element/eventListener';
+  eventListener,
+} from './element/eventListener'
 
 export {
-	infiniteScroll,
-} from './element/infiniteScroll';
+  infiniteScroll,
+} from './element/infiniteScroll'
 
 export {
-	resizeObserver,
-} from './element/resize-observer';
+  resizeObserver,
+} from './element/resize-observer'
 
 export {
-	vModel,
-} from './v-model/vModel';
+  vModel,
+} from './v-model/vModel'
 
 export {
-	type Attrs,
-} from './vue-types/attrs';
+  type Attrs,
+} from './vue-types/attrs'
 
 export {
-	type ComponentEmit,
-} from './vue-types/componentEmit';
+  type ComponentEmit,
+} from './vue-types/componentEmit'
 
 export {
-	type ComponentEvents,
-} from './vue-types/componentEvents';
+  type ComponentEvents,
+} from './vue-types/componentEvents'
 
 export {
-	type ComponentExposed,
-} from './vue-types/componentExposed';
+  type ComponentExposed,
+} from './vue-types/componentExposed'
 
 export {
-	type ComponentProps,
-} from './vue-types/componentProps';
+  type ComponentProps,
+} from './vue-types/componentProps'
 
 export {
-	type ComponentSlots,
-} from './vue-types/componentSlots';
+  type ComponentSlots,
+} from './vue-types/componentSlots'
 
 export {
-	type ComponentType,
-} from './vue-types/componentType';
+  type ComponentType,
+} from './vue-types/componentType'
 
 export {
-	type ExtractedEvents,
-} from './vue-types/extractedEvents';
+  type ExtractedEvents,
+} from './vue-types/extractedEvents'
 
 export {
-	type ShortEmits,
-} from './vue-types/shortEmits';
+  type ShortEmits,
+} from './vue-types/shortEmits'
 
 export {
-	type WatchOnceOptions,
-	watchOnce,
-} from './watch-once/watchOnce';
+  type WatchOnceOptions,
+  watchOnce,
+} from './watch-once/watchOnce'
 
 export {
-	getScreenWidth,
-} from './window/getScreenWidth';
-
+  getScreenWidth,
+} from './window/getScreenWidth'

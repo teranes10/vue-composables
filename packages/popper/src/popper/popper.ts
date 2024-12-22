@@ -1,4 +1,4 @@
-import type { Placement, Instance as PopperInstance } from '@popperjs/core'
+import type { Modifier, Placement, Instance as PopperInstance } from '@popperjs/core'
 import { createPopper } from '@popperjs/core'
 
 export function popper({
@@ -57,38 +57,37 @@ export function popper({
       return
     }
 
-    const _modifiers: any[] = []
-    if (modifiers.length > 0 || offset) {
-      if (modifiers.includes('same-width')) {
-        _modifiers.push({
-          name: 'sameWidth',
-          enabled: true,
-          phase: 'beforeWrite',
-          fn: ({ state }: any) => {
-            state.elements.popper.style.width = `${(state.elements.reference as HTMLElement).offsetWidth
-            }px`
-          },
-        })
-      }
+    const defaultModifiers: Record<PopperModifier, Partial<Modifier<string, any>>> = {
+      'same-width': {
+        name: 'sameWidth',
+        enabled: true,
+        phase: 'beforeWrite',
+        fn: ({ state }) => {
+          state.elements.popper.style.width = `${(state.elements.reference as HTMLElement).offsetWidth}px`
+        },
+      },
+      'prevent-overflow': {
+        name: 'preventOverflow',
+        enabled: true,
+        phase: 'beforeWrite',
+        options: {
+          boundariesElement: popperElement.parentElement,
+        },
+      },
+    }
 
-      if (modifiers.includes('prevent-overflow')) {
-        _modifiers.push({
-          name: 'preventOverflow',
-          enabled: true,
-          phase: 'beforeWrite',
-          options: {
-            boundariesElement: popperElement.parentElement,
-          },
-        })
-      }
-
-      if (offset) {
-        _modifiers.push({
-          name: 'offset',
-          options: {
-            offset,
-          },
-        })
+    const _modifiers: Partial<Modifier<string, any>>[] = []
+    if (offset) {
+      _modifiers.push({
+        name: 'offset',
+        options: {
+          offset,
+        },
+      })
+    }
+    if (modifiers.length > 0) {
+      for (const modifier of modifiers) {
+        _modifiers.push(typeof modifier === 'string' ? defaultModifiers[modifier] : modifier)
       }
     }
 
@@ -318,7 +317,7 @@ export interface PopperInput {
   persistent?: boolean
   placement?: Placement
   activeClass?: string
-  modifiers?: PopperModifiers[]
+  modifiers?: (PopperModifier | Partial<Modifier<string, any>>)[]
   action?: PopperAction
   offset?: PopperOffset
   duplicates?: boolean
@@ -326,5 +325,5 @@ export interface PopperInput {
 }
 
 type PopperAction = 'hover' | 'click'
-type PopperModifiers = 'same-width' | 'prevent-overflow'
+type PopperModifier = 'same-width' | 'prevent-overflow'
 type PopperOffset = [number, number]

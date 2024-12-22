@@ -1,13 +1,12 @@
 export const types = [
-	"QrCodeType",
-	"QrCodeErrorCorrectionLevel",
-];
+  'QrCodeType',
+  'QrCodeErrorCorrectionLevel',
+]
 
 export const interfaces = [
-	"QrCodeOptions",
-];
+  'QrCodeOptions',
+]
 
 export const functions = [
-	"generateQrCode",
-];
-
+  'generateQrCode',
+]

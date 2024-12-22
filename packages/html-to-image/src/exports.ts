@@ -1,12 +1,11 @@
 export const interfaces = [
-	"ComponentToHtmlOptions",
-	"ComponentToImageOptions",
-	"HtmlToImageOptions",
-];
+  'ComponentToHtmlOptions',
+  'ComponentToImageOptions',
+  'HtmlToImageOptions',
+]
 
 export const functions = [
-	"componentToHtml",
-	"componentToImage",
-	"htmlToImage",
-];
-
+  'componentToHtml',
+  'componentToImage',
+  'htmlToImage',
+]

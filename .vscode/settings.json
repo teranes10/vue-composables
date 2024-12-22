@@ -48,6 +48,7 @@
     "popperjs",
     "qrcode",
     "spsa",
+    "teranes",
     "treeshake",
     "tsup",
     "unparse"

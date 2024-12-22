@@ -1,7 +1,6 @@
 export {
-	type QrCodeType,
-	type QrCodeErrorCorrectionLevel,
-	type QrCodeOptions,
-	generateQrCode,
-} from './generate-qr/generateQr';
-
+  type QrCodeType,
+  type QrCodeErrorCorrectionLevel,
+  type QrCodeOptions,
+  generateQrCode,
+} from './generate-qr/generateQr'

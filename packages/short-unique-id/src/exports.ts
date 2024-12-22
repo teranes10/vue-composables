@@ -1,4 +1,3 @@
 export const functions = [
-	"getShortUniqueId",
-];
-
+  'getShortUniqueId',
+]

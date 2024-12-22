@@ -7,13 +7,13 @@ Creates and manages a Popper.js instance for positioning elements relative to a 
 - `persistent` (`boolean`, optional): Whether the popper stays open unless explicitly closed.
 - `placement` (`string`, optional): The placement of the popper relative to the reference element. Defaults to `'bottom-start'`.
 - `isShowing` (`Ref<boolean>`, optional): A reactive reference to track the popper's visibility state. Defaults to `ref(false)`.
-- `modifiers` (`PopperModifiers[]`, optional): An array of modifiers for the popper. Defaults to an empty array.
+- `modifiers` (`PopperModifier[]`, optional): An array of modifiers for the popper. Defaults to an empty array.
 - `activeClass` (`string`, optional): A class to add to the popper element when it is shown.
 - `action` (`PopperAction`, optional): The action that triggers the popper (e.g., `'click'` or `'hover'`).
 - `offset` (`PopperOffset`, optional): Offset values for the popper positioning.
 - `duplicates` (`boolean`, optional): Whether to allow duplicate popper elements. Defaults to `false`.
 
-#### Examples
+## Examples
 
 ```javascript
 import { onMounted, ref } from 'vue'

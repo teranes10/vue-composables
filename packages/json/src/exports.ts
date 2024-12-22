@@ -1,5 +1,4 @@
 export const functions = [
-	"jsonStringFormatter",
-	"toCamelCaseJson",
-];
-
+  'jsonStringFormatter',
+  'toCamelCaseJson',
+]
