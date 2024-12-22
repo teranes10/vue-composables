@@ -1,5 +1,17 @@
 # @teranes/pdf
 
+## 13.0.0
+
+### Major Changes
+
+- 54ff426: popper
+
+### Patch Changes
+
+- Updated dependencies [54ff426]
+  - @teranes/html-to-image@13.0.0
+  - @teranes/utils@14.0.0
+
 ## 12.0.0
 
 ### Major Changes

@@ -1,5 +1,16 @@
 # @teranes/vue-composables
 
+## 20.0.0
+
+### Major Changes
+
+- 54ff426: popper
+
+### Patch Changes
+
+- Updated dependencies [54ff426]
+  - @teranes/utils@14.0.0
+
 ## 19.0.0
 
 ### Major Changes

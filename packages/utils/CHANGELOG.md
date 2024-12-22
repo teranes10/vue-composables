@@ -1,5 +1,11 @@
 # @teranes/utils
 
+## 14.0.0
+
+### Major Changes
+
+- 54ff426: popper
+
 ## 13.0.0
 
 ### Major Changes
